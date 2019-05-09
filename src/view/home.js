@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import { register, logear, out, google, facebook } from "../view-controller/promises.js";
+=======
+
+import { register, logear, out } from "../view-controller/promises.js";
+>>>>>>> 0f4bbb53afc2b0562c17b19cad0797e8f4f303bb
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
@@ -41,3 +46,5 @@ export default ()=>{
 
 return CreateChildNode
 }
+
+// Home(FatherElement);

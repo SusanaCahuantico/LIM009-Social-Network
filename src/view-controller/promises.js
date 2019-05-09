@@ -1,5 +1,6 @@
 import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook } from "../controller/logins.js";
 
+
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('contraseñaRegister').value;
@@ -14,7 +15,6 @@ NewUsers(email, password)
       
     }); 
   }
-
 
   export const logear = () => {
     const email = document.getElementById('emailLogin').value;
@@ -38,6 +38,7 @@ LogUsers(email, password)
     })
   }
 
+<<<<<<< HEAD
   export const google = () => {
     LogGoogle()
     .then(function(result) {
@@ -81,3 +82,5 @@ LogUsers(email, password)
       };
       
     
+=======
+>>>>>>> 0f4bbb53afc2b0562c17b19cad0797e8f4f303bb
