@@ -1,3 +1,4 @@
+
 import { register, logear, out } from "../view-controller/promises.js";
 
 export default ()=>{
@@ -34,3 +35,5 @@ export default ()=>{
 
 return CreateChildNode
 }
+
+// Home(FatherElement);

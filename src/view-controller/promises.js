@@ -1,5 +1,6 @@
 import { NewUsers,LogUsers,SingOut } from "../controller/logins.js";
 
+
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('contraseñaRegister').value;
@@ -14,7 +15,6 @@ NewUsers(email, password)
       
     }); 
   }
-
 
   export const logear = () => {
     const email = document.getElementById('emailLogin').value;
@@ -41,3 +41,4 @@ LogUsers(email, password)
       console.log(error)
     })
   }
+
