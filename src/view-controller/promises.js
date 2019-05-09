@@ -35,7 +35,7 @@ LogUsers(email, password)
       console.log(error)
     })
   }
-
+  
   export const google = () => {
     LogGoogle()
     .then(function(result) {
@@ -64,4 +64,3 @@ LogUsers(email, password)
       })
       };
       
-    

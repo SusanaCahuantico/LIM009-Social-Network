@@ -16,8 +16,9 @@ export default ()=>{
     <a id="btnGoogle"><img src="../images/google.png" alt=""/></a>
     <h2>No tienes un cuenta? <a id="register"> REGISTRATE!</a> </h2>
     <h2>Bienvenida!</h2>
-    <input id="emailRegister" type="text" placeholder="Email"/> </br>
-    <input id="contraseñaRegister" type="password" placeholder="Password"/> </br>
+    <h2>No tienes un cuenta?</h2> <a id='btn-registrate'>REGISTRATE!</a> <br>
+    <input id="email2" type="text" placeholder="Email"/> </br>
+    <input id="contraseña2" type="password" placeholder="Password"/> </br>
     <button id="btnRegister">¡Registrate!</button>   
     </div>`
     ;
@@ -37,7 +38,6 @@ export default ()=>{
 
     const btnFacebook = CreateChildNode.querySelector('#btnFacebook')
     btnFacebook.addEventListener('click', facebook)
-
 
 return CreateChildNode
 }
