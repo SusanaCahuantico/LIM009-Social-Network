@@ -1,5 +1,5 @@
 
-import { register, logear, out } from "../view-controller/promises.js";
+import { register, logear, out, loguearConGoogle, loguearConFacebook } from "../view-controller/promises.js";
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
@@ -13,12 +13,13 @@ export default ()=>{
     <button id="btnLogOut"> Cerrar sesion  </button>
     </div>
     <h2>Tambien puedes ingresar con ...</h2>
-    <img src="https://cdn.icon-icons.com/icons2/726/PNG/128/instagram_f_icon-icons.com_62685.png" alt=""/> 
-    <img src="https://cdn.icon-icons.com/icons2/413/PNG/128/Facebook_41212.png" alt=""/>
     <h2>No tienes un cuenta? <a id="register"> REGISTRATE!</a> </h2>
     <h2>Bienvenida!</h2>
-    <input id="emailRegister" type="text" placeholder="Email"/> </br>
-    <input id="contraseñaRegister" type="password" placeholder="Password"/> </br>
+    <a id="btn-google"><img src="../imagen/search.png" alt=""/></a>
+    <a id="btn-facebook"><img src="../imagen/facebook.png" alt=""/></a>
+    <h2>No tienes un cuenta?</h2> <a id='btn-registrate'>REGISTRATE!</a> <br>
+    <input id="email2" type="text" placeholder="Email"/> </br>
+    <input id="contraseña2" type="password" placeholder="Password"/> </br>
     <button id="btnRegister">¡Registrate!</button>   
     </div>`
     ;
@@ -32,6 +33,13 @@ export default ()=>{
     
     const btnLogOut = CreateChildNode.querySelector('#btnLogOut')
     btnRegister.addEventListener('click', out)
+
+    const botonGoogle = CreateChildNode.querySelector('#btn-google')
+    botonGoogle.addEventListener('click', loguearConGoogle)
+
+    const botonFacebook = CreateChildNode.querySelector('#btn-facebook')
+    botonFacebook.addEventListener('click', loguearConFacebook)
+
 
 return CreateChildNode
 }

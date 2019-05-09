@@ -1,8 +1,3 @@
-// iniciar sesión:
-
-export const iniciarSesion = () => {
-    return firebase.auth().signInWithEmailAndPassword(email, password)
-}
 // Loguear con cuenta Google
 
 export const loguearConCuentaGoogle = () => {
@@ -21,9 +16,13 @@ export const NewUsers = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
  };
 
+ // iniciar Sesión:
+
  export const LogUsers = (email, password)=> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
  }
+
+ // Cerrar sesión: 
 
  export const SingOut = ()=> {
     return firebase.auth().SingOut();
