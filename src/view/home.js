@@ -2,8 +2,8 @@ import { logear, google, facebook } from "../view-controller/promises.js";
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
-    const Content = `<div class = "col-xs-12 col-lg-6"><img src="https://pngimage.net/wp-content/uploads/2018/06/logo-veterinaria-png-2.png"/></div>
-    <div class = "col-xs-12 col-lg-6"><img src="http://www.fitlifelucy.com/wp-content/uploads/2016/10/fitlifelucy.png"/>
+    const Content = `<div class = "col-xs-12 col-lg-6"><img src="../images/logo.png" alt=""/></div>
+    <div class = "col-xs-12 col-lg-6"><img src="../images/titulo.PNG" alt=""/>
     <h2>Bienvenida!</h2>
     <input id="emailLogin" type="text" placeholder="Email"/> </br>
     <input id="contraseñaLogin" type="password" placeholder="Password"/> </br>
