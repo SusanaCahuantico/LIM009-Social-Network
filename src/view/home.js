@@ -12,10 +12,10 @@ export default ()=>{
     <button id="btnLogOut"> Cerrar sesion  </button>
     </div>
     <h2>Tambien puedes ingresar con ...</h2>
+    <a id="btnFacebook"><img src="../images/facebook.png" alt=""/></a> 
+    <a id="btnGoogle"><img src="../images/google.png" alt=""/></a>
     <h2>No tienes un cuenta? <a id="register"> REGISTRATE!</a> </h2>
     <h2>Bienvenida!</h2>
-    <a id="btnGoogle"><img src="../imagen/search.png" alt=""/></a>
-    <a id="btnFacebook"><img src="../imagen/facebook.png" alt=""/></a>
     <h2>No tienes un cuenta?</h2> <a id='btn-registrate'>REGISTRATE!</a> <br>
     <input id="email2" type="text" placeholder="Email"/> </br>
     <input id="contraseña2" type="password" placeholder="Password"/> </br>
@@ -39,8 +39,5 @@ export default ()=>{
     const botonFacebook = CreateChildNode.querySelector('#btnFacebook')
     botonFacebook.addEventListener('click', facebook)
 
-
 return CreateChildNode
 }
-
-// Home(FatherElement);
