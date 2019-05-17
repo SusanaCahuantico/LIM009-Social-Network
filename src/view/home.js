@@ -25,6 +25,5 @@ export default ()=>{
     const btnFacebook = CreateChildNode.querySelector('#btnFacebook')
     btnFacebook.addEventListener('click', facebook)
 
-
 return CreateChildNode
 }
