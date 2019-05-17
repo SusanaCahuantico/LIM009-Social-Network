@@ -1,9 +1,8 @@
-
-import { register, logear, out, loguearConGoogle, loguearConFacebook } from "../view-controller/promises.js";
+import { register, logear, out, google, facebook } from "../view-controller/promises.js";
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
-    const Content = `<div class = "col-xs-12 col-lg-6"><img src="http://purelytwins.com/wp-content/uploads/2013/03/purely-fit-life-logos-600px3.png"/></div>
+    const Content = `<div class = "col-xs-12 col-lg-6"><img src="https://pngimage.net/wp-content/uploads/2018/06/logo-veterinaria-png-2.png"/></div>
     <div class = "col-xs-12 col-lg-6"><img src="http://www.fitlifelucy.com/wp-content/uploads/2016/10/fitlifelucy.png"/>
     <h2>Bienvenida!</h2>
     <input id="emailLogin" type="text" placeholder="Email"/> </br>
@@ -15,8 +14,8 @@ export default ()=>{
     <h2>Tambien puedes ingresar con ...</h2>
     <h2>No tienes un cuenta? <a id="register"> REGISTRATE!</a> </h2>
     <h2>Bienvenida!</h2>
-    <a id="btn-google"><img src="../imagen/search.png" alt=""/></a>
-    <a id="btn-facebook"><img src="../imagen/facebook.png" alt=""/></a>
+    <a id="btnGoogle"><img src="../imagen/search.png" alt=""/></a>
+    <a id="btnFacebook"><img src="../imagen/facebook.png" alt=""/></a>
     <h2>No tienes un cuenta?</h2> <a id='btn-registrate'>REGISTRATE!</a> <br>
     <input id="email2" type="text" placeholder="Email"/> </br>
     <input id="contraseña2" type="password" placeholder="Password"/> </br>
@@ -32,13 +31,13 @@ export default ()=>{
     btnLogIn.addEventListener('click', logear)
     
     const btnLogOut = CreateChildNode.querySelector('#btnLogOut')
-    btnRegister.addEventListener('click', out)
+    btnLogOut.addEventListener('click', out)
 
-    const botonGoogle = CreateChildNode.querySelector('#btn-google')
-    botonGoogle.addEventListener('click', loguearConGoogle)
+    const botonGoogle = CreateChildNode.querySelector('#btnGoogle')
+    botonGoogle.addEventListener('click', google)
 
-    const botonFacebook = CreateChildNode.querySelector('#btn-facebook')
-    botonFacebook.addEventListener('click', loguearConFacebook)
+    const botonFacebook = CreateChildNode.querySelector('#btnFacebook')
+    botonFacebook.addEventListener('click', facebook)
 
 
 return CreateChildNode

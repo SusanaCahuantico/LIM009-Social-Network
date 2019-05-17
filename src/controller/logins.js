@@ -1,12 +1,12 @@
 // Loguear con cuenta Google
 
-export const loguearConCuentaGoogle = () => {
+export const LogGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider)
 }
 // Loguear con cuenta faceboook:
 
-export const loguearConCuentaFacebook = () => {
+export const LogFacebook = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(provider)
 }

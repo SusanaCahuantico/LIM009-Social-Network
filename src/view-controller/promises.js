@@ -1,5 +1,4 @@
-import { NewUsers,LogUsers,SingOut, loguearConCuentaGoogle, loguearConCuentaFacebook } from "../controller/logins.js";
-
+import { NewUsers,LogUsers,SingOut, LogGoogle, LogFacebook } from "../controller/logins.js";
 
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
@@ -12,7 +11,6 @@ NewUsers(email, password)
     var errorMessage = error.message;
       // ...
       console.log(errorMessage);
-      
     }); 
   }
 
@@ -31,7 +29,6 @@ LogUsers(email, password)
     }); 
   }
 
-
   export const out =() => {
     SingOut()
     .then(function(){
@@ -43,8 +40,8 @@ LogUsers(email, password)
   }
 
 
-  export const loguearConGoogle = () => {
-    loguearConCuentaGoogle()
+  export const google = () => {
+    LogGoogle()
     .then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
@@ -64,8 +61,8 @@ LogUsers(email, password)
     })
     };
     
-    export const loguearConFacebook = () => {
-    loguearConCuentaFacebook()
+    export const facebook = () => {
+    LogFacebook()
     .then(function(result) {
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var token = result.credential.accessToken;
@@ -84,4 +81,5 @@ LogUsers(email, password)
     // ...
     })
     };
+ 
     

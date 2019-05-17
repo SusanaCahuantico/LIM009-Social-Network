@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One');
+@import url('https://fonts.googleapis.com/css?family=Viga');
+@import url('menu.css');
+
+*{
+    box-sizing: border-box;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+body {
+    font-family: 'Viga', sans-serif;    
+}
+
+h1, h2, h3 {
+    font-family: 'Francois One', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+/*................ Estilos del header........ */
+.header {
+    height: 60px;
+}
+
+.header .contenedor {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo, .icon-menu {
+    margin: 5px;
+}
+
+.icon-menu {
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    background: #FBA919;
+    color: #fff;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 5px;
+    margin-left: auto;
+    cursor: pointer;
+}
+/* ..........Estilos del menu .....*/
+.nav {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    transition: all 0.4s;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu__link {
+    display: block;
+    padding: 20px;
+    background: #FBA919;
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu__link:hover {
+    background: white;
+    color: #FBA919;
+}
+
+.mostrar {
+    left: 0;
+}
