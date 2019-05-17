@@ -1,0 +1,1 @@
+import {menuPrincipal} from './view/profile.js'

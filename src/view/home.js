@@ -19,11 +19,11 @@ export default ()=>{
     const btnLogIn = CreateChildNode.querySelector('#btnLogin')
     btnLogIn.addEventListener('click', logear)
 
-    const btnGoogle = CreateChildNode.querySelector('#btnGoogle')
-    btnGoogle.addEventListener('click', google)
+    const botonGoogle = CreateChildNode.querySelector('#btnGoogle')
+    botonGoogle.addEventListener('click', google)
 
-    const btnFacebook = CreateChildNode.querySelector('#btnFacebook')
-    btnFacebook.addEventListener('click', facebook)
+    const botonFacebook = CreateChildNode.querySelector('#btnFacebook')
+    botonFacebook.addEventListener('click', facebook)
 
 return CreateChildNode
 }
