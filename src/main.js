@@ -1,11 +1,13 @@
-// Este es el punto de entrada de tu aplicacion
-
-// import { myFunction } from './lib/index.js';
 import Home from "./view/home.js";
+import { changeView } from './view-controller/routes.js'
 
-// myFunction();
+const initRouter = () => {
+  changeView(window.location.hash)
+  window.addEventListener('hashchange', () => changeView(window.location.hash)
+)}
 
-export const init = () => {
+
+export const initFirebase = () => {
 const config = {
   apiKey: "AIzaSyB7zvj9po_juhXbLvE4yZtizGDydklpOnA",
   authDomain: "social-network-2b544.firebaseapp.com",
@@ -16,8 +18,12 @@ const config = {
 };
 firebase.initializeApp(config);
 };
-init();
 
-const FatherElement = document.getElementById('father'); 
-FatherElement.appendChild(Home());
 
+window.addEventListener('load', () => {
+  initFirebase()
+  initRouter()
+  const FatherElement = document.getElementById('father'); 
+  FatherElement.appendChild(Home());
+  
+})

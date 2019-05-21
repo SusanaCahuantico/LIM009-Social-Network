@@ -1,6 +1,6 @@
-export const menuPrincipal = () => {
-    const headerPrincipal = document.createAttribute('div');
-    const header = `
+ export default ()=>{
+        const CreateChildNode = document.createElement("div");
+        const Content =`
     <header>
         <div class="contenedor">
             <img src="css/pawprint.png" alt="">
@@ -8,12 +8,14 @@ export const menuPrincipal = () => {
             <input type="checkbox" id="menu-bar">
             <label class="icon-menu" for="menu-bar"></label>
             <nav class="menu">
-                <a href="#/Perfil">Mi perfil </a>
-                <a href="#/Patas"> Mis patas </a>
-                <a href="#/Cerrar"> Cerrar Sesión </a>
+                <a href="#/">Mis Patas </a>
+                <a href="#/ingresa">Ingresa </a>
+                <a href="#/perfil">Mi perfil </a>
+                <a href=""> Cerrar Sesión </a>
             </nav>
         </div>
     </header>
-    `;
-    headerPrincipal.innerHTML = header;    
-};
+    `    ;
+    CreateChildNode.innerHTML = Content;
+    return CreateChildNode
+}
