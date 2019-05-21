@@ -1,6 +1,5 @@
 import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook } from "../controller/logins.js";
 
-
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('contraseñaRegister').value;

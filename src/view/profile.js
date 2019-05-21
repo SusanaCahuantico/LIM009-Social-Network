@@ -8,11 +8,12 @@ export const menuPrincipal = () => {
             <input type="checkbox" id="menu-bar">
             <label class="icon-menu" for="menu-bar"></label>
             <nav class="menu">
-                <a href="">Mi perfil </a>
-                <a href=""> FitLife </a>
-                <a href=""> Cerrar Sesión </a>
+                <a href="#/Perfil">Mi perfil </a>
+                <a href="#/Patas"> Mis patas </a>
+                <a href="#/Cerrar"> Cerrar Sesión </a>
             </nav>
         </div>
     </header>
-    `    
-}
+    `;
+    headerPrincipal.innerHTML = header;    
+};

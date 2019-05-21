@@ -11,7 +11,7 @@ export default ()=>{
     <h2>Tambien puedes ingresar con ...</h2>
     <a id="btnFacebook"><img src="../images/facebook.png" alt=""/></a> 
     <a id="btnGoogle"><img src="../images/google.png" alt=""/></a>
-    <h2>No tienes un cuenta? <a id="register"> REGISTRATE!</a> </h2> 
+    <p> ¿No tienes un cuenta? <a href="#/register"> REGISTRATE </a> </p>
     </div>`
     ;
     CreateChildNode.innerHTML = Content;
