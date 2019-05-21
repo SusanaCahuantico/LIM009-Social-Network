@@ -7,11 +7,11 @@ export default ()=>{
     <h2>Bienvenida!</h2>
     <input id="emailLogin" type="text" placeholder="Email"/> </br>
     <input id="contraseñaLogin" type="password" placeholder="Password"/> </br>
-    <button id="btnLogin">Log in</button>
+    <a href="#/perfil"><button id="btnLogin">Log in</button></a>
     <h2>Tambien puedes ingresar con ...</h2>
     <a id="btnFacebook"><img src="../images/facebook.png" alt=""/></a> 
     <a id="btnGoogle"><img src="../images/google.png" alt=""/></a>
-    <h2>No tienes un cuenta? <a id="register"> REGISTRATE!</a> </h2> 
+    <h2>No tienes un cuenta? <a href="#/registrate"> REGISTRATE!</a> </h2> 
     </div>`
     ;
     CreateChildNode.innerHTML = Content;
