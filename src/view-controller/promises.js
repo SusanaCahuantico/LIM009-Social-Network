@@ -70,3 +70,7 @@ LogUsers(email, password)
     };
  
     
+// export const dataFirebase = require("dataFirebase");
+    /* Required for side-effects */
+  // require("dataFirebase/firestore");
+    
