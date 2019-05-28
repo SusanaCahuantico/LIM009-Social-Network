@@ -1,9 +1,9 @@
-import {out} from '../view-controller/promises.js'
+// import {out} from '../view-controller/promises.js'
 
 export default ()=>{
         const CreateChildNode = document.createElement("div");
         const Content =`
-    <header>
+        <header>
         <div class="contenedor">
             <img src="../images/pawprint.png" alt=""/>
             <h1 class=""> Mis Patas </h1>
@@ -12,17 +12,14 @@ export default ()=>{
             <nav class="menu">
                 <a href="#/mispatas">Mis Patas </a>
                 <a href="#/ingresa">Ingresa </a>
-                <a href="#/miperfil">Mi perfil </a>
+                <a href="#/perfil">Mi perfil </a>
                 <a href="" id="btnOut"> Cerrar Sesión </a>
             </nav>
-        </div>
+            </div>
     </header>
     `    ;
 
     CreateChildNode.innerHTML = Content;
-
-    const btnOut = CreateChildNode.querySelector('#btnOut')
-    btnOut.addEventListener('click', out);
 
     return CreateChildNode
 }
