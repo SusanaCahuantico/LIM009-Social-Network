@@ -2,7 +2,7 @@ import Home from "./view/home.js";
 import { changeView } from './view-controller/routes.js';
 
 const initRouter = () => {
-  changeView(window.location.hash)
+  changeView(window.location.hash);
   window.addEventListener('hashchange', () => changeView(window.location.hash)
 )}
 

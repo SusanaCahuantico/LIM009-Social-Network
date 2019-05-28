@@ -1,7 +1,7 @@
 import { components } from '../view-controller/index.js'
 
-const changeView = (route) => {
-    const father = document.getElementById("father")
+export const changeView = (route) => {
+    const father = document.getElementById("father");
     father.innerHTML = '';
     
  switch (route) {
