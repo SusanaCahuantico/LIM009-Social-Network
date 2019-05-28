@@ -1,3 +1,4 @@
+// Registrar usuarios:
 
 export const NewUsers = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -24,5 +25,3 @@ export const NewUsers = (email, password) => {
    const provider = new firebase.auth.FacebookAuthProvider();
    return firebase.auth().signInWithPopup(provider)
    }
-   
-   

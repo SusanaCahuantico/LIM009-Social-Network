@@ -1,12 +1,3 @@
-import Home from "./view/home.js";
-import { changeView } from './view-controller/routes.js'
-
-const initRouter = () => {
-  changeView(window.location.hash)
-  window.addEventListener('hashchange', () => changeView(window.location.hash)
-)}
-
-
 export const initFirebase = () => {
 const config = {
   apiKey: "AIzaSyB7zvj9po_juhXbLvE4yZtizGDydklpOnA",
@@ -18,12 +9,3 @@ const config = {
 };
 firebase.initializeApp(config);
 };
-
-
-window.addEventListener('load', () => {
-  initFirebase()
-  initRouter()
-  const FatherElement = document.getElementById('father'); 
-  FatherElement.appendChild(Home());
-  
-})
