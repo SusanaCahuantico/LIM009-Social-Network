@@ -1,8 +1,9 @@
 import { components } from '../view-controller/index.js'
 
 const changeView = (route) => {
-    const padre = document.getElementById("father")
-    padre.innerHTML = '';
+    const father = document.getElementById("father")
+    father.innerHTML = '';
+    
  switch (route) {
      case '#/':  father.appendChild(components.home())
      break;
@@ -16,4 +17,8 @@ const changeView = (route) => {
  }   
 console.log(route)
 }
-export {changeView}
+
+export const init = () => {
+    window.addEventListener('hashchange', () => changeView(window.location.hash))
+}
+window.addEventListener('load', init)

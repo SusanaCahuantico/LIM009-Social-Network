@@ -1,6 +1,5 @@
 import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook, DataBase } from "../controller/logins.js";
 
-
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
     const password = document.getElementById('passwordRegister').value;
@@ -73,17 +72,3 @@ LogUsers(email, password)
     };
  
 
-    // name
-    // lastName
-    // emailRegister =do
-
-    // export const data = () => {
-    //   DataBase(name, lastName, emailRegister)
-    //   .then(function(docRef) {
-    //     console.log("Document written with ID: ", docRef.id);
-    // })
-    // .catch(function(error) {
-    //     console.error("Error adding document: ", error);
-    // });
-    
-    // }

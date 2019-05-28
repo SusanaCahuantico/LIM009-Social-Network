@@ -17,8 +17,5 @@ export default ()=>{
     const btnRegister = CreateChildNode.querySelector('#btnRegister')
     btnRegister.addEventListener('click', register)
 
-    
-
-
     return CreateChildNode
 }
