@@ -20,6 +20,4 @@ export default ()=>{
 
     return CreateChildNode
 }
-        </div>
-    </header>
-
+        
