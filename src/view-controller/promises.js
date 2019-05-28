@@ -1,11 +1,13 @@
-import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook } from "../controller/logins.js";
+import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook, DataBase } from "../controller/logins.js";
 
 
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
-    const password = document.getElementById('contraseñaRegister').value;
+    const password = document.getElementById('passwordRegister').value;
+    const lastName = document.getElementById('lastName').value;
+    const name = document.getElementById('name').value;
 NewUsers(email, password)
-.then(()=>console.log("Registrado"))
+.then(()=>DataBase(name, lastName, email))
 .catch(function(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -70,4 +72,18 @@ LogUsers(email, password)
     })
     };
  
+
+    // name
+    // lastName
+    // emailRegister =do
+
+    // export const data = () => {
+    //   DataBase(name, lastName, emailRegister)
+    //   .then(function(docRef) {
+    //     console.log("Document written with ID: ", docRef.id);
+    // })
+    // .catch(function(error) {
+    //     console.error("Error adding document: ", error);
+    // });
     
+    // }

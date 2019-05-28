@@ -1,13 +1,16 @@
-import { components } from '../view/index.js'
+import { components } from '../view-controller/index.js'
 
 const changeView = (route) => {
     const padre = document.getElementById("father")
     padre.innerHTML = '';
  switch (route) {
-     case '#/': { return father.appendChild(components.home())}
-     case '#/registrate': { return father.appendChild(components.home2())}
-     case '#/perfil': { return father.appendChild(components.profile())}
- 
+     case '#/':  father.appendChild(components.home())
+     break;
+     case '#/registrate': father.appendChild(components.home2())
+     break;
+     case '#/perfil':  father.appendChild(components.header())
+                       father.appendChild(components.body())
+     break;
      default:
          break;
  }   
