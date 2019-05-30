@@ -25,6 +25,13 @@ export const NewUsers = (email, password) => {
    return firebase.auth().signInWithPopup(provider)
    }
 
+export const DataBase = (name, lastName, emailRegister) => {
 
+   return firebase.firestore().collection("users").add ({
+      Nombre : name,
+      Apellido : lastName,
+      Email : emailRegister
+   })
+}
    
    

@@ -1,5 +1,4 @@
-import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook } from "../controller/logins.js";
-import { AddNotes, DataBase } from "../controller/interaccion.js"
+import { NewUsers,LogUsers,SingOut,LogGoogle,LogFacebook, DataBase } from "../controller/logins.js";
 
 export const register = () => {
     const email = document.getElementById('emailRegister').value;
@@ -72,22 +71,4 @@ LogUsers(email, password)
     })
     };
  
-
-    export const notes = () => {
-      
-      const tareaInput = document.getElementById('tareaInput').value;
-     const list = document.getElementById('list').value;
-     list.innerHTML = tareaInput;
-  AddNotes(list)
-  .then(function(result) {
-    var token = result.credential.accessToken;
-    var user = result.user;
-    })
-  .catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-        console.log(errorMessage);
-      }); 
-    }
-    
 
