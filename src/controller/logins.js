@@ -62,11 +62,18 @@ export const getPost = (node) => {
       wrap.innerHTML = '';
       querySnapshot.forEach(doc => {
          const data = doc.data();
+         console.log(doc.id)
          wrap.innerHTML += `
          <div>         
             <textarea>${data.nota}</textarea>
+            <button id="eliminar"> Eliminar </button>
+            <button id="editar"> Editar </button>
          </div>   
          `;
       });
    })
+}
+
+export const deletePost = (id) => {
+  return firebase.firestore().collection('notas').doc(id).delete();
 }
