@@ -27,7 +27,6 @@ export const NewUsers = (email, password) => {
    }
 
 export const DataBase = (name, lastName, emailRegister) => {
-
    return firebase.firestore().collection("users").add ({
       Nombre : name,
       Apellido : lastName,
@@ -41,20 +40,33 @@ export const dataPost = (content) => {
    })
 }
 
-export const getPost = () => {
-const father = document.getElementById('father');
-return firebase.firestore().collection("post").get()
-.then(function(querySnapshot) {
-   father.innerHTML = '';
-   querySnapshot.forEach(function(doc) {
-       console.log( `${doc.id} => ${doc.data().nota}`);
-       father.innerHTML += `
-       <div>
-       <img src=${doc.URL}/>
-       <p> ${doc.data().nota}</p>
-       </div>
-       `
-   });
- });
+export const getPerfil = (node) => {
+   firebase.firestore().collection('users').onSnapshot(querySnapshot => {
+      const painter = node.querySelector('#painter');
+         painter.innerHTML = '';
+         querySnapshot.forEach(doc => {
+            const data = doc.data();
+            painter.innerHTML += `
+            <div>
+            <p>${data.Nombre}</p>
+            <p>${data.Apellido}</p>
+            <div>
+            `;
+         });
+      })
 }
 
+export const getPost = (node) => {
+   firebase.firestore().collection('notas').onSnapshot(querySnapshot => {
+      const wrap = node.querySelector('#wrap');
+      wrap.innerHTML = '';
+      querySnapshot.forEach(doc => {
+         const data = doc.data();
+         wrap.innerHTML += `
+         <div>         
+            <textarea>${data.nota}</textarea>
+         </div>   
+         `;
+      });
+   })
+}

@@ -75,6 +75,4 @@ export const facebook = () => {
 export const post = () => {
   const tareaInput = document.getElementById('tareaInput').value;
   dataPost(tareaInput)
-  //.then(() => dataPost(id, content))
- // alert('ok')
 }
