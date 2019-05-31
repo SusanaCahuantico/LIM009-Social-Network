@@ -1,3 +1,4 @@
+import {post} from '../view-controller/promises.js'
 export default ()=>{
     const CreateChildNode = document.createElement("div");
     const Content =`
@@ -7,17 +8,15 @@ export default ()=>{
             <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
             <input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
         </form>
-    <div class="wrap">
-        <ul class="lista" id="lista">
-            <li><a href="#">1 Lorem ipsum dolor sit amet.</a></li>
-            <li><a href="#">2 Lorem ipsum dolor sit amet.</a></li>
-            <li><a href="#">3 Lorem ipsum dolor sit amet.</a></li>
-        </ul>
+        <div class="wrap">
         </div>
         </div>
   </body>
 ` ;
 CreateChildNode.innerHTML = Content;
+
+const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
+botonAgregar.addEventListener('click', post)
 
 return CreateChildNode
 }

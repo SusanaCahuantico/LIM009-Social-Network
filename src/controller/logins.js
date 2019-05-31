@@ -34,5 +34,26 @@ export const DataBase = (name, lastName, emailRegister) => {
       Email : emailRegister
    })
 }
-   
-   
+
+export const dataPost = (content) => {
+   return firebase.firestore().collection('notas').add ({
+      nota: content
+   })
+}
+
+export const getPost = () => {
+const father = document.getElementById('father');
+return firebase.firestore().collection("post").get()
+.then(function(querySnapshot) {
+   father.innerHTML = '';
+   querySnapshot.forEach(function(doc) {
+       console.log( `${doc.id} => ${doc.data().nota}`);
+       father.innerHTML += `
+       <div>
+       <img src=${doc.URL}/>
+       <p> ${doc.data().nota}</p>
+       </div>
+       `
+   });
+ });
+}
