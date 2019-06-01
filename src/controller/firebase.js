@@ -56,24 +56,28 @@ export const getPerfil = (node) => {
       })
 }
 
+export const deletePost = (id) => {
+   console.log(id)
+  return firebase.firestore().collection('notas').doc(id).delete();
+}
+
 export const getPost = (node) => {
    firebase.firestore().collection('notas').onSnapshot(querySnapshot => {
       const wrap = node.querySelector('#wrap');
       wrap.innerHTML = '';
       querySnapshot.forEach(doc => {
          const data = doc.data();
-         console.log(doc.id)
+        // console.log(doc.id)
          wrap.innerHTML += `
          <div>         
             <textarea>${data.nota}</textarea>
-            <button id="eliminar"> Eliminar </button>
-            <button id="editar"> Editar </button>
+            <button id="btn-delete-${doc.id}"> Eliminar </button>
+            <button id="btn-edit-${doc.id}"> Editar </button>
          </div>   
          `;
+         wrap.querySelector(`#btn-delete-${doc.id}`)
+         .addEventListener('click', () =>  deletePost);
+         return wrap;
       });
    })
-}
-
-export const deletePost = (id) => {
-  return firebase.firestore().collection('notas').doc(id).delete();
 }

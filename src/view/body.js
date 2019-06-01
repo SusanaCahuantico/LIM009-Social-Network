@@ -1,5 +1,5 @@
 import {post} from '../view-controller/promises.js'
-import { getPost, getPerfil, DataBase } from '../controller/logins.js';
+import { getPost, getPerfil, DataBase } from '../controller/firebase.js';
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");

@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, SingOut, LogGoogle, LogFacebook, DataBase, dataPost } from "../controller/logins.js";
+import { NewUsers, LogUsers, SingOut, LogGoogle, LogFacebook, DataBase, dataPost } from "../controller/firebase.js";
 // import firebase = require("firebase");
 
 // Promesa logueo:  
@@ -32,7 +32,6 @@ export const register = () => {
 
 
 // Cerrar sesión:
-
 export const out = () => {
   SingOut()
     .then(function () {
