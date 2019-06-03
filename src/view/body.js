@@ -1,7 +1,7 @@
 import {post} from '../view-controller/promises.js'
 import { getPost, getPerfil, DataBase } from '../controller/firebase.js';
 
-export default ()=>{
+export default () => {
     const CreateChildNode = document.createElement("div");
     const Content =`
     <body>
@@ -13,6 +13,12 @@ export default ()=>{
             <input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
         </form>
         <div id="wrap">
+         <div>         
+            <textarea>${data.nota}</textarea>
+            <button id="btn-delete-${doc.id}"> Eliminar </button>
+            <button id="btn-edit-${doc.id}"> Editar </button>
+         </div>   
+        
         </div>
         </div>
   </body>

@@ -1,4 +1,5 @@
 import { components } from '../view-controller/index.js'
+import {getPost} from '../controller/firebase.js'
 
 export const changeView = (route) => {
     const father = document.getElementById("father");
@@ -9,13 +10,15 @@ export const changeView = (route) => {
      break;
      case '#/registrate': father.appendChild(components.home2())
      break;
-     case '#/perfil':  father.appendChild(components.header())
-                       father.appendChild(components.body())
+     case '#/perfil':
+         getPost((notas) => {  
+     father.appendChild(components.header())
+     father.appendChild(components.body())
+         })
      break;
      default:
          break;
  }   
-console.log(route)
 }
 
 export const init = () => {
