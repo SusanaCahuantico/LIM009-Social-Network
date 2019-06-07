@@ -26,17 +26,15 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (idNote, content) => {
-      return firebase.firestore().collection('notas').add ({
-         nota: content,
-         idPost: idNote,
-         //gilberta  
+   export const dataPost = (content) => {
+      return firebase.firestore().collection("notas").add ({
+         nota: content,  
       })
    }
    
 //Leer documentos   
   export const getPost = (callback) => {
-   firebase.firestore().collection('notas')
+   firebase.firestore().collection("notas")
    .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
@@ -48,7 +46,7 @@ export const NewUsers = (email, password) => {
 
 //Eliminar notas:
  export const deletePost = (idPost) => {
-    return firebase.firestore().collection('notas').doc(idPost).delete()
+    return firebase.firestore().collection("notas").doc(idPost).delete()
 }
    
    //Agregar usuarios:
@@ -60,3 +58,8 @@ export const NewUsers = (email, password) => {
         // Mensaje: mensajePost,
       })
    }
+
+/* Leer datos del usuario:
+export const getUser = () => {
+   return firebase.firestore().collection("users").where
+}*/
