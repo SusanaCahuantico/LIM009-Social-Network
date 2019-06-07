@@ -1,7 +1,7 @@
 import { getPost } from '../controller/firebase.js';
-import {agregarNota} from '../view-controller/promises.js';
+import {agregarNota, eliminarNota} from '../view-controller/promises.js';
 
-export default (data) => {
+export default () => {
     const CreateChildNode = document.createElement("div");
     const Content =`
     <body>
@@ -25,12 +25,16 @@ export default (data) => {
         const divPainter = CreateChildNode.querySelector('#wrap')
         getPost(posts => {
             posts.forEach(post => {
-                divPainter.innerHTML += `
+                divPainter.innerHTML += 
+                `
                 <textarea>${post.nota}</textarea>   
-                <button id="btn-eliminar-${post.id}"> Eliminar </button>
+                <button id="btn-eliminar" ${post.id}> Eliminar </button>
                 <button id="btn-editar"> Editar </button>
-                `;        
-    }); 
+                `
+            }); 
+            const btnEliminar = document.querySelector('#btn-eliminar')
+            btnEliminar.addEventListener('click', eliminarNota())
+            console.log(btnEliminar); 
 });
 return CreateChildNode
 }

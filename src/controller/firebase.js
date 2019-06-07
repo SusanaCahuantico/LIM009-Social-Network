@@ -26,9 +26,11 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (content) => {
+   export const dataPost = (idNote, content) => {
       return firebase.firestore().collection('notas').add ({
-         nota: content
+         nota: content,
+         idPost: idNote,
+         //gilberta  
       })
    }
    
@@ -45,9 +47,9 @@ export const NewUsers = (email, password) => {
 } 
 
 //Eliminar notas:
- export const deletePost = (idUser) => {
-    return firebase.firestore().collection('notas').doc(idUser).delete()
-   }
+ export const deletePost = (idPost) => {
+    return firebase.firestore().collection('notas').doc(idPost).delete()
+}
    
    //Agregar usuarios:
    export const dataBase = (name, lastName, emailRegister) => {

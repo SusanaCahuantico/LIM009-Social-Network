@@ -73,14 +73,14 @@ export const facebook = () => {
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
 dataPost(tareaInput)
-.then(() => {
+.then((data) => {
   data.message = 'Nota agregada'
-}).catch(() => {
+}).catch((data) => {
   data.message = 'Lo sentimos, no se agregar la nota';
 })
 }
 
-export const eliminarNota = () => {
-  const eliminar = document.getElementById('btn-eliminar').value;
-  deletePost(eliminar)
+export const eliminarNota = (idPost) => {
+  // const eliminar = document.getElementById('btn-eliminar').value;
+  deletePost(idPost)
 }
