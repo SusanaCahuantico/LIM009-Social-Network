@@ -25,73 +25,36 @@ export const NewUsers = (email, password) => {
    return firebase.auth().signInWithPopup(provider)
    }
 
-export const DataBase = (uid, name, lastName, emailRegister) => {
-   return firebase.firestore().collection("users").add ({
-      UserID: uid,
-      Nombre : name,
-      Apellido : lastName,
-      Email : emailRegister,
-      likes: 0,
-      date: Date(),
-   })
-}
-
-export const dataPost = (content) => {
-   return firebase.firestore().collection('notas').add ({
-      nota: content
-   })
-}
-
-export const getPerfil = (node) => {
-   firebase.firestore().collection('users').onSnapshot(querySnapshot => {
-      const painter = node.querySelector('#painter');
-         painter.innerHTML = '';
-         querySnapshot.forEach(doc => {
-            const data = doc.data();
-            painter.innerHTML += `
-            <div>
-            <p>${data.Nombre}</p>
-            <p>${data.Apellido}</p>
-            <div>
-            `;
-         });
+//Agregar post:
+   export const dataPost = (content) => {
+      return firebase.firestore().collection('notas').add ({
+         nota: content
       })
-}
-
-export const deletePost = (id) => {
-  firebase.firestore().collection('notas').doc(id).delete()
-}
-
-// Leer documentos: 
-
-export const getPost = (callback) => 
+   }
+   
+//Leer documentos   
+  export const getPost = (callback) => {
    firebase.firestore().collection('notas')
    .onSnapshot((querySnapshot) => {
-      let data = [];
+      const data = [];
       querySnapshot.forEach((doc) => {
          data.push({ id: doc.id, ...doc.data() })
       });
       callback(data);
    });
+} 
 
-/*
-export const getPost = (node) => {
-   firebase.firestore().collection('notas')
-   .onSnapshot(querySnapshot => {
-      const wrap = node.querySelector('#wrap');
-      wrap.innerHTML = '';
-      querySnapshot.forEach(doc => {
-         const data = doc.data();
-         wrap.innerHTML += `
-         <div>         
-            <textarea>${data.nota}</textarea>
-            <button id="btn-delete-${doc.id}"> Eliminar </button>
-            <button id="btn-edit-${doc.id}"> Editar </button>
-         </div>   
-         `    ;
-         wrap.querySelector(`#btn-delete-${doc.id}`)
-         .addEventListener('click', deletePost);
-         return wrap;
-      });
-   })
-} */
+//Eliminar notas:
+ export const deletePost = (idUser) => {
+    return firebase.firestore().collection('notas').doc(idUser).delete()
+   }
+   
+   //Agregar usuarios:
+   export const dataBase = (name, lastName, emailRegister) => {
+      return firebase.firestore().collection("users").add ({
+         Nombre : name,
+         Apellido : lastName,
+         Email : emailRegister,
+        // Mensaje: mensajePost,
+      })
+   }

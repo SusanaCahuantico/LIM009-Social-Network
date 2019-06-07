@@ -10,10 +10,10 @@ export default ()=>{
             <input type="checkbox" id="menu-bar">
             <label class="icon-menu" for="menu-bar"></label>
             <nav class="menu">
-                <a href="#/mispatas">Mis Patas </a>
-                <a href="#/ingresa">Ingresa </a>
+                <a href="#/perfil">Mis Patas </a>
+                <a href="#/login">Ingresa </a>
                 <a href="#/perfil">Mi perfil </a>
-                <a href="" id="btnOut"> Cerrar Sesión </a>
+                <a href="#/login" id="btnOut"> Cerrar Sesión </a>
             </nav>
             </div>
     </header>
@@ -21,7 +21,6 @@ export default ()=>{
 
     CreateChildNode.innerHTML = Content;
     
-
     return CreateChildNode
 }
         

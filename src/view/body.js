@@ -1,7 +1,7 @@
-import {post} from '../view-controller/promises.js'
-import { getPost, getPerfil, DataBase } from '../controller/firebase.js';
+import { getPost } from '../controller/firebase.js';
+import {agregarNota} from '../view-controller/promises.js';
 
-export default () => {
+export default (data) => {
     const CreateChildNode = document.createElement("div");
     const Content =`
     <body>
@@ -13,24 +13,24 @@ export default () => {
             <input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
         </form>
         <div id="wrap">
-         <div>         
-            <textarea>${data.nota}</textarea>
-            <button id="btn-delete-${doc.id}"> Eliminar </button>
-            <button id="btn-edit-${doc.id}"> Editar </button>
-         </div>   
+        </div>
+        </div>
+        </body>
+        ` ;
+        CreateChildNode.innerHTML = Content;
         
-        </div>
-        </div>
-  </body>
-` ;
-CreateChildNode.innerHTML = Content;
-
-const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
-botonAgregar.addEventListener('click', post)
-getPost(CreateChildNode)
-
-const divPainter = CreateChildNode.querySelector('#painter')
-divPainter.innerHTML = DataBase;
-getPerfil(CreateChildNode)
+        const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
+        botonAgregar.addEventListener('click', agregarNota)
+        
+        const divPainter = CreateChildNode.querySelector('#wrap')
+        getPost(posts => {
+            posts.forEach(post => {
+                divPainter.innerHTML += `
+                <textarea>${post.nota}</textarea>   
+                <button id="btn-eliminar-${post.id}"> Eliminar </button>
+                <button id="btn-editar"> Editar </button>
+                `;        
+    }); 
+});
 return CreateChildNode
 }

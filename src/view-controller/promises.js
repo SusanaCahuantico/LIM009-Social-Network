@@ -1,5 +1,4 @@
-import { NewUsers, LogUsers, SingOut, LogGoogle, LogFacebook, DataBase, dataPost } from "../controller/firebase.js";
-// import firebase = require("firebase");
+import { NewUsers, LogUsers, SingOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost } from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -20,7 +19,7 @@ export const register = () => {
   const lastName = document.getElementById('lastName').value;
   const name = document.getElementById('name').value;
   NewUsers(email, password)
-    .then(() => DataBase(name, lastName, email))
+    .then(() => dataBase(name, lastName, email))
      alert ('registrado')
     // .then(() => #/login('hanschange')
     .catch(function (error) {
@@ -71,7 +70,17 @@ export const facebook = () => {
     })
 };
 
-export const post = () => {
-  const tareaInput = document.getElementById('tareaInput').value;
-  dataPost(tareaInput)
+export const agregarNota = () =>{
+const tareaInput = document.getElementById('tareaInput').value;
+dataPost(tareaInput)
+.then(() => {
+  data.message = 'Nota agregada'
+}).catch(() => {
+  data.message = 'Lo sentimos, no se agregar la nota';
+})
+}
+
+export const eliminarNota = () => {
+  const eliminar = document.getElementById('btn-eliminar').value;
+  deletePost(eliminar)
 }
