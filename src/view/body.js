@@ -1,20 +1,24 @@
-import { getPost } from '../controller/firebase.js';
 import {agregarNota, eliminarNota} from '../view-controller/promises.js';
 
-const notitas = () => {
-    const createElementNota = document.createElement("div");
-    const content = `
-    <textarea>${post.nota}</textarea>   
+const postPost = (post) => {
+    const divWrap = document.createElement('div');
+    divWrap.innerHTML += 
+    `
+    <textarea readonly>${post.nota}</textarea>   
     <button id="btn-eliminar-${post.id}"> Eliminar </button>
     <button id="btn-editar"> Editar </button>
-    `;
-    createElementNota.innerHTML = content;
+    `
+    divWrap.querySelector(`#btn-eliminar-${post.id}`)
+    .addEventListener('click', () => eliminarNota(post));
 
-
-    return createElementNota;
+    divWrap.querySelector('#btn-editar')
+    .addEventListener('click', () => {
+        console.log('estoy editando')
+    })
+    return divWrap;
 }
 
-export default () => {
+export default (posts) => {
     const CreateChildNode = document.createElement("div");
     const Content =`
     <body>
@@ -34,17 +38,10 @@ export default () => {
     
     const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
     botonAgregar.addEventListener('click', agregarNota)
-    
+       
     const divPainter = CreateChildNode.querySelector('#wrap')
-    getPost(posts => {
-        posts.forEach(post => {
-           console.log(post.id)
-            divPainter.appendChild
-            const btnEliminar = document.querySelector(`#btn-eliminar-${post.id}`)
-            btnEliminar.addEventListener('click', () => {
-                eliminarNota(post.id)
-            })
-}); 
-});
+    posts.forEach(post => {
+    divPainter.appendChild(postPost(post));
+    });
 return CreateChildNode
 }

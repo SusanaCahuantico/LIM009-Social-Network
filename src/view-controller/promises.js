@@ -81,6 +81,5 @@ dataPost(tareaInput)
 }
 
 export const eliminarNota = (idPost) => {
-  // const eliminar = document.getElementById('btn-eliminar').value;
-  deletePost(idPost)
+  deletePost(idPost.id)
 }
