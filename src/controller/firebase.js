@@ -58,8 +58,13 @@ export const NewUsers = (email, password) => {
         // Mensaje: mensajePost,
       })
    }
-// editar notas:
 
+/* editar notas: */
+export const editarPost = (idPost,contenido) => {
+   return firebase.firestore().collection("notas").doc(idPost).update({
+     nota: contenido,  
+})
+}
 
 /* Leer datos del usuario:
 export const getUser = () => {

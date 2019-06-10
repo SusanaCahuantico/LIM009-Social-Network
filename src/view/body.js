@@ -1,19 +1,29 @@
-import {agregarNota, eliminarNota} from '../view-controller/promises.js';
+import {agregarNota, eliminarNota, promisePost} from '../view-controller/promises.js';
+// import {dataPost} from '../controller/firebase.js'
+// import {editarPost} from '../controller/firebase.js'
 
-const postPost = (post) => {
+const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
     divWrap.innerHTML += 
     `
-    <textarea readonly>${post.nota}</textarea>   
+    <textarea readonly id="area">${post.nota}</textarea>   
     <button id="btn-eliminar-${post.id}"> Eliminar </button>
-    <button id="btn-editar"> Editar </button>
+    <button id="btn-editar-${post.id}"> Editar </button>
+    <button id="btn-guardar"> Guardar </button>
     `
     divWrap.querySelector(`#btn-eliminar-${post.id}`)
     .addEventListener('click', () => eliminarNota(post));
 
-    divWrap.querySelector('#btn-editar')
+    divWrap.querySelector(`#btn-editar-${post.id}`)
     .addEventListener('click', () => {
-        console.log('estoy editando')
+    document.getElementById('area').readOnly = false;
+    console.log('estoy editando')
+
+    divWrap.querySelector('#btn-guardar')
+    .addEventListener('click', () => {
+        promisePost(post);
+       // nuevaNota(post);
+    })  
     })
     return divWrap;
 }
@@ -41,7 +51,8 @@ export default (posts) => {
        
     const divPainter = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
-    divPainter.appendChild(postPost(post));
+    divPainter.appendChild(eliminarPost(post));
+
     });
 return CreateChildNode
 }
