@@ -49,20 +49,19 @@ export const NewUsers = (email, password) => {
     return firebase.firestore().collection("notas").doc(idPost).delete()
 }
    
-   //Agregar usuarios:
-   export const dataBase = (name, lastName, emailRegister) => {
+//Agregar usuarios:
+export const dataBase = (name, lastName, emailRegister) => {
       return firebase.firestore().collection("users").add ({
          Nombre : name,
          Apellido : lastName,
          Email : emailRegister,
-        // Mensaje: mensajePost,
       })
-   }
+}
 
 /* editar notas: */
-export const editarPost = (idPost,contenido) => {
+export const editarPost = (idPost, nuevo) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
-     nota: contenido,  
+     nota: nuevo,  
 })
 }
 

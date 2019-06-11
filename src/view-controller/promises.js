@@ -84,20 +84,19 @@ export const eliminarNota = (idPost) => {
   deletePost(idPost.id)
 }
 
-/* Promesa editar post: */
+/* Promesa editar post: 
 
 export const promisePost = (idPost, contenido) => {
   editarPost(idPost.id, contenido)
 }
+*/
 
-/*
-export const nuevaNota = () =>{
-  const nueva = document.getElementById('area').value;
-  dataPost(nueva)
+export const nuevaNota = (idPost, nota) =>{
+  editarPost(idPost, nota)
   .then((data) => {
     data.message = 'Nota agregada'
-  }).catch((data) => {
+  })
+  .catch((data) => {
     data.message = 'Lo sentimos, no se agregar la nota';
   })
   }
-  */

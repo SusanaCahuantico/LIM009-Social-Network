@@ -1,6 +1,4 @@
-import {agregarNota, eliminarNota, promisePost} from '../view-controller/promises.js';
-// import {dataPost} from '../controller/firebase.js'
-// import {editarPost} from '../controller/firebase.js'
+import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
 
 const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
@@ -8,23 +6,23 @@ const eliminarPost = (post) => {
     `
     <textarea readonly id="area">${post.nota}</textarea>   
     <button id="btn-eliminar-${post.id}"> Eliminar </button>
-    <button id="btn-editar-${post.id}"> Editar </button>
-    <button id="btn-guardar"> Guardar </button>
+    <button id='btn-editar'> Editar </button>
+    <button id='btn-guardar-${post.id}'> Guardar </button>
     `
     divWrap.querySelector(`#btn-eliminar-${post.id}`)
     .addEventListener('click', () => eliminarNota(post));
 
-    divWrap.querySelector(`#btn-editar-${post.id}`)
+    divWrap.querySelector('#btn-editar')
     .addEventListener('click', () => {
     document.getElementById('area').readOnly = false;
-    console.log('estoy editando')
-
-    divWrap.querySelector('#btn-guardar')
+    });
+    
+    divWrap.querySelector(`#btn-guardar-${post.id}`)
     .addEventListener('click', () => {
-        promisePost(post);
-       // nuevaNota(post);
-    })  
-    })
+        const nuevo = document.getElementById('area').value;
+        nuevaNota(post.id,nuevo)
+    });
+
     return divWrap;
 }
 
@@ -37,7 +35,7 @@ export default (posts) => {
     </div>
     <form class="formulario" action="">
     <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
-    <input type="button" class="boton" id="btn-agregar" value="Agregar Tarea">
+    <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
     </form>
     <div id="wrap">
     </div>
