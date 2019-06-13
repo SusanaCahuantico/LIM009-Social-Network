@@ -1,8 +1,19 @@
-// importamos la funcion que vamos a testear
-import { myFunction } from "../src/lib/index";
-
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+describe('Facebook', () => {
+  it('Debería poder iniciar sesion a Facebook con email: danieladelcarmen168@hotmil.com y password 123456', () => {
+    return LogFacebook()
+      .then((user) => {
+        expect(user.isAnonymous).toBe(false)
+      })
   });
-});
+})
+
+describe('Google', () => {
+  it('Debería poder iniciar sesion a Google con email: danieladelcarmen168@hotmil.com y password 123456', () => {
+    return LogGoogle()
+      .then((user) => {
+        expect(user.isAnonymous).toBe(false)
+      })
+  });
+})
+
+
