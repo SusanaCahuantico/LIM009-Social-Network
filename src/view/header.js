@@ -1,4 +1,4 @@
-// import {out} from '../view-controller/promises.js'
+import {out} from '../view-controller/promises.js'
 
 export default ()=>{
         const CreateChildNode = document.createElement("div");
@@ -13,7 +13,7 @@ export default ()=>{
                 <a href="#/perfil">Mis Patas </a>
                 <a href="#/login">Ingresa </a>
                 <a href="#/perfil">Mi perfil </a>
-                <a href="#/login" id="btnOut"> Cerrar Sesión </a>
+                <a href="" id="btnOut"> Cerrar Sesión </a>
             </nav>
             </div>
     </header>
@@ -21,6 +21,9 @@ export default ()=>{
 
     CreateChildNode.innerHTML = Content;
     
+    const cerrarSesion = CreateChildNode.querySelector('#btnOut')
+    cerrarSesion.addEventListener('click', out)
+
     return CreateChildNode
 }
         
