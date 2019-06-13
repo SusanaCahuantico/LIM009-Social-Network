@@ -15,13 +15,12 @@ const fixtureData = {
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 
-// import { dataBase, dataPost, deletePost} from "../controller/firebase.js";
-import { addNote, getNotes, deleteNote } from "../src/controller/controller-firebase.js";
+import { dataPost, getPost, deletePost} from "../src/controller/firebase.js";
 
 describe('lista de notas', () => {
   it('Debería porder agregar una nota', (done) => {
-    return addNote('preparar la pildora')
-      .then(() => getNotes(
+    return dataPost('preparar la pildora')
+      .then(() => getPost(
         (data) => {
           const result = data.find((note) => note.title === 'preparar la pildora');
           expect(result.title).toBe('preparar la pildora');
@@ -30,10 +29,10 @@ describe('lista de notas', () => {
       ))
   });
   it('Debería poder eliminar una nota', (done) => {
-    return deleteNote('abc1d')
-      .then(() => getNotes(
+    return deletePost('abc')
+      .then(() => getPost(
         (data) => {
-          const result = data.find((note) => note.id === 'abc1d');
+          const result = data.find((note) => note.id === 'abc');
           expect(result).toBe(undefined);
           done()
         }
