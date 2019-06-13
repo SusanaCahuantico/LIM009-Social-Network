@@ -11,13 +11,40 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore
 );
 
-import { NewUsers} from "../controller/firebase.js";
+import { NewUsers, LogFacebook, LogGoogle, LogUsers} from "../src/controller/firebase.js";
 
-describe('inicio de sesión', () => {
+describe('Nuevo usuario', () => {
   it('Debería poder iniciar sesión', () => {
     return NewUsers('susana@gmail.com', '123456')
     .then((user) => {
       expect(user.email).toBe('susana@gmail.com')
     })
+  });
+})
+
+describe('Inicio sesión', () => {
+  it('Debería poder iniciar sesión', () => {
+    return LogUsers('danieladelcarmen168@hotmail.com', '123456')
+    .then((user) => {
+      expect(user.email).toBe('danieladelcarmen168@hotmail.com')
+    })
+  });
+})
+
+describe('Facebook', () => {
+  it('Debería poder iniciar sesion a Facebook', () => {
+    return LogFacebook()
+      .then((user) => {
+        expect(user.isAnonymous).toBe(false)
+      })
+  });
+})
+
+describe('Google', () => {
+  it('Debería poder iniciar sesion a Google', () => {
+    return LogGoogle()
+      .then((user) => {
+        expect(user.isAnonymous).toBe(false)
+      })
   });
 })
