@@ -22,8 +22,8 @@ it('Debería porder agregar una nota', (done) => {
 return dataPost('preparar la pildora')
 .then(() => getPost(
 (data) => {
-const result = data.find((note) => note.title === 'preparar la pildora');
-expect(result.title).toBe('preparar la pildora');
+const result = data.find((note) => note.nota === 'preparar la pildora');
+expect(result.nota).toBe('preparar la pildora');
 done()
 }
 ))
