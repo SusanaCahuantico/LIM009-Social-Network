@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, singOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, currentUser } from "../controller/firebase.js";
+import { NewUsers, LogUsers, singOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, privaciPost} from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -80,13 +80,13 @@ dataPost(tareaInput)
 })
 }
 
-export const eliminarNota = (idPost) => {
-  deletePost(idPost.id)
+export const eliminarNota = (post) => {
+  deletePost(post.id)
 }
 
 // Editar post:
-export const nuevaNota = (idPost, nota) =>{
-  editarPost(idPost, nota)
+export const nuevaNota = (post, nota) =>{
+  editarPost(post, nota)
   .then((data) => {
     data.message = 'Nota agregada'
   })
@@ -95,9 +95,9 @@ export const nuevaNota = (idPost, nota) =>{
   })
   }
 
-//Privacidad:
-export const privacidadPost = (idPost, postPrivado) => {
-  if(currentUser().uid === idPost.idUser){
-  privaciPost(idPost.id, postPrivado)
+/* Privacidad: */
+export const privacidadPost = (post, nuevoEstado) => {
+  if(currentUser().uid === post.idUser){
+  privaciPost(post.id, nuevoEstado)
   }
 }

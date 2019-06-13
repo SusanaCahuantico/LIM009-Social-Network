@@ -5,7 +5,7 @@ const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
     divWrap.innerHTML += 
     `
-    <stextarea readonly id="area">${post.nota}</textarea>   
+    <textarea readonly id="area">${post.nota}</textarea>   
     <button id="btn-eliminar-${post.id}"> Eliminar </button>
     <button id='btn-editar'> Editar </button>
       <button id='btn-guardar-${post.id}'> Guardar </button>
@@ -34,7 +34,7 @@ export default (posts) => {
     <div class="bodyTmp">
     <div id="painter">
     </div>
-    <select id="modoPost">
+    <select id="estado-${posts.id}">
     <option value="privado">Privado</option>
     <option value="publico">Público</option>
     </select>
@@ -55,10 +55,13 @@ export default (posts) => {
     const divPainter = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
     divPainter.appendChild(eliminarPost(post));
+    });
     
-    const divModoPost = CreateChildNode.querySelector('#modoPost')
-    divModoPost.addEventListener('change', privacidadPost)
-    
-  });
+    //privacidad:
+    const divModoPost = CreateChildNode.querySelector(`#estado-${posts.id}`)
+    divModoPost.addEventListener('change', () => {
+      const nuevoEstado = divModoPost.value;
+      privacidadPost(posts, nuevoEstado)
+    });
 return CreateChildNode
 }

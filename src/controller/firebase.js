@@ -26,9 +26,9 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (idUser, content, privacidad, date) => {
+   export const dataPost = ( content, privacidad, date) => {
       return firebase.firestore().collection("notas").add ({
-         idUser: idUser,
+        // idUser: idUser,
          nota: content,
          privacidad: privacidad,
          date: date,
@@ -37,7 +37,7 @@ export const NewUsers = (email, password) => {
    
 //Leer documentos   
   export const getPost = (callback) => {
-   firebase.firestore().collection("notas").orderBy("date", "desc")
+   firebase.firestore().collection("notas")
    .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
@@ -59,14 +59,14 @@ export const editarPost = (idPost, nuevo) => {
    })
 }
 
-// Privacidad del post -- updatePrivacyPost
-export const privaciPost = (idPost, privaPost) =>{
+/* Privacidad del post*/
+export const privaciPost = (idPost, nuevoEstado) =>{
    return firebase.firestore().collection('notas').doc(idPost).update({
-      privacidad : privaPost, 
+      privacidad : nuevoEstado, 
    });
 }
 
-// Callback privacidad: 
+/* Callback privacidad: 
 export const getPublicPosts = (callback)=>{
    firebase.firestore().collection('notas').where("privacidad","==","publico").orderBy("date","desc")
    .onSnapshot(querySnapshot=>{
@@ -77,7 +77,7 @@ export const getPublicPosts = (callback)=>{
       callback(posts);  
    })
 }
-
+*/
 // Usuario activo:
 export const currentUser = () => firebase.auth().currentUser;
 
@@ -85,9 +85,9 @@ export const currentUser = () => firebase.auth().currentUser;
 export const observador = () => firebase.auth().onAuthStateChanged();
 
 // Agregar usuarios:
-export const dataBase = (uid, name, lastName, emailRegister) => {
-      return firebase.firestore().collection("users").doc(uid).set({
-         idUser: uid,
+export const dataBase = ( name, lastName, emailRegister) => {
+      return firebase.firestore().collection("users").doc(uid).add({
+        // idUser: uid,
          Nombre : name,
          Apellido : lastName,
          Email : emailRegister,
