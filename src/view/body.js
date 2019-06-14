@@ -53,7 +53,6 @@ export default (posts) => {
     
     const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
     botonAgregar.addEventListener('click', agregarNota)
-    getPost
        
     const divPainter = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
