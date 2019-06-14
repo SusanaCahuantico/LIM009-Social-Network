@@ -38,6 +38,7 @@ export const NewUsers = (email, password) => {
    .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
+         doc.privacidad === 'publico'
          data.push({ id: doc.id, ...doc.data() })
       });
       callback(data);
@@ -65,7 +66,7 @@ export const editarPost = (idPost, nuevo) => {
 })
 }
 
-/* Leer datos del usuario:
+/* Leer datos del usuario:*/
 export const getUser = () => {
    return firebase.firestore().collection("users").where
-}*/
+}
