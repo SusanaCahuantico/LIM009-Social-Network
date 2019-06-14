@@ -18,18 +18,19 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 import { dataPost, getPost, deletePost} from "../src/controller/firebase.js";
 
 describe('lista de notas', () => {
-  it('Debería porder agregar una nota', (done) => {
-    return dataPost('preparar la pildora')
-      .then(() => getPost(
-        (data) => {
-          const result = data.find((note) => note.nota === 'preparar la pildora');
-          expect(result.nota).toBe('preparar la pildora');
-          done()
-        }
-      ))
-  });
-  it('Debería poder eliminar una nota', (done) => {
-    return deletePost('abc1d')
+    it('Debería porder agregar una nota', (done) => {
+      return dataPost('preparar la pildora')
+        .then(() => getPost(
+          (data) => {
+            const result = data.find((note) => note.nota === 'preparar la pildora');
+            expect(result.nota).toBe('preparar la pildora');
+            done()
+          }
+        ))
+    });
+
+  it('Editar una nota', (done) => {
+    return editarPost('abc1d')
       .then(() => getPost(
         (data) => {
           const result = data.find((note) => note.id === 'abc1d');
@@ -38,4 +39,22 @@ describe('lista de notas', () => {
         }
       ))
   });
+
+  it('Eliminar una nota', (done) => {
+    return deletePost('abc1d')
+      .then(() => getPost(
+        (data) => {
+          const result = data.find((note) => note.id === 'abc1d');
+          expect(result).toBe(undefined);
+          done()
+        }
+      ))
+<<<<<<< HEAD
+  });
 })
+=======
+  })
+});
+
+
+>>>>>>> c242002f4fc69e0dfd5df1219676b02692a913d7
