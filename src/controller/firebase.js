@@ -9,9 +9,8 @@ export const NewUsers = (email, password) => {
  }
 
  // Cerrar sesión: 
- export const signOut = () => {
-   return firebase.auth().signOut()
- }
+ export const signOut = () => firebase.auth().signOut()
+
  //Login con google
  export const LogGoogle = () => {
    const provider = new firebase.auth.GoogleAuthProvider();
@@ -25,10 +24,9 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (content, privacidad) => {
+   export const dataPost = (content) => {
       return firebase.firestore().collection("notas").add ({
          nota: content, 
-         privacidad
       })
    }
    

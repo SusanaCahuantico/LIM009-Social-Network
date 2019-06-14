@@ -1,6 +1,7 @@
 import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
+// import {currentUser} from '../controller/firebase.js';
 
-const listaDePost = (post) => {
+const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
     divWrap.innerHTML += 
     `
@@ -33,12 +34,10 @@ export default (posts) => {
     <div class="bodyTmp">
     <div id="painter">
     </div>
-      <div>
-        <select id="estado">
-          <option value="privado">Privado</option>
-          <option value="publico">Público</option>
-        </select>
-      </div>
+    <select id="estado-${posts.id}">
+    <option value="privado">Privado</option>
+    <option value="publico">Público</option>
+    </select>
     <form class="formulario" action="">
     <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
     <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
@@ -55,8 +54,14 @@ export default (posts) => {
        
     const divPainter = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
-    divPainter.appendChild(listaDePost(post));
-    })
+    divPainter.appendChild(eliminarPost(post));
+    });
     
-return CreateChildNode;
+    //privacidad:
+    const divModoPost = CreateChildNode.querySelector(`#estado-${posts.id}`)
+    divModoPost.addEventListener('change', () => {
+      const nuevoEstado = divModoPost.value;
+      privacidadPost(posts, nuevoEstado)
+    });
+return CreateChildNode
 }
