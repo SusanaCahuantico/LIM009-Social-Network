@@ -1,5 +1,4 @@
 import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
-//import {getPost} from '../controller/firebase.js';
 
 const listaDePost = (post) => {
     const divWrap = document.createElement('div');
@@ -59,5 +58,5 @@ export default (posts) => {
     divPainter.appendChild(listaDePost(post));
     })
     
-return CreateChildNode
+return CreateChildNode;
 }
