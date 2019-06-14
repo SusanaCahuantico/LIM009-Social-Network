@@ -67,3 +67,17 @@ header .contenedor {
 .bodyTmp {
     padding: 200px;
 }
+
+#area {
+    height:80px;
+    border: 5px inset #0b420b;
+    padding: 1%;
+}
+
+.input {
+    padding: 1%;
+}
+
+.boton {
+    border: inset;
+}

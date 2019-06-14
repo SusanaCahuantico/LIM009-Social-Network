@@ -6,9 +6,9 @@ const eliminarPost = (post) => {
     divWrap.innerHTML += 
     `
     <textarea readonly id="area">${post.nota}</textarea>   
-    <button id="btn-eliminar-${post.id}"> Eliminar </button>
-    <button id='btn-editar'> Editar </button>
-      <button id='btn-guardar-${post.id}'> Guardar </button>
+    <button class="boton" id="btn-eliminar-${post.id}"> Eliminar </button>
+    <button class="boton" id='btn-editar'> Editar </button>
+      <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
     `
     divWrap.querySelector(`#btn-eliminar-${post.id}`)
     .addEventListener('click', () => eliminarNota(post));
@@ -39,7 +39,7 @@ export default (posts) => {
     <option value="publico">Público</option>
     </select>
     <form class="formulario" action="">
-    <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
+    <input class = "input" type="text" id="tareaInput" placeholder="Agrega tu tarea">
     <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
     </form>
     <div id="wrap">
