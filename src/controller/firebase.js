@@ -27,8 +27,7 @@ export const NewUsers = (email, password) => {
 //Agregar post:
    export const dataPost = (content, privacidad) => {
       return firebase.firestore().collection("notas").add ({
-         nota: content,  
-         privacidad
+         nota: content, 
       })
    }
    
@@ -65,5 +64,3 @@ export const editarPost = (idPost, nuevo) => {
      nota: nuevo,  
 })
 }
-
-export const 
