@@ -1,5 +1,4 @@
 import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
-// import {currentUser} from '../controller/firebase.js';
 
 const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
