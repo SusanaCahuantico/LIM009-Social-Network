@@ -49,12 +49,5 @@ describe('lista de notas', () => {
           done()
         }
       ))
-<<<<<<< HEAD
-  });
-})
-=======
   })
 });
-
-
->>>>>>> c242002f4fc69e0dfd5df1219676b02692a913d7
