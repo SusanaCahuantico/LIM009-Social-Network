@@ -28,7 +28,7 @@ export const NewUsers = (email, password) => {
    export const dataPost = (content, privacidad) => {
       return firebase.firestore().collection("notas").add ({
          nota: content, 
-         privacidad
+         privacidad: privacidad,
       })
    }
    
