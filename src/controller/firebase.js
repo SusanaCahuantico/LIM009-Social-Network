@@ -10,7 +10,6 @@ export const NewUsers = (email, password) => {
 
  // Cerrar sesión: 
  export const signOut = () => firebase.auth().signOut()
- 
 
  //Login con google
  export const LogGoogle = () => {
@@ -65,5 +64,3 @@ export const editarPost = (idPost, nuevo) => {
      nota: nuevo,  
 })
 }
-
-export const 
