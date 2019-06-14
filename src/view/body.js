@@ -1,7 +1,7 @@
 import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
-// import {currentUser} from '../controller/firebase.js';
+//import {getPost} from '../controller/firebase.js';
 
-const eliminarPost = (post) => {
+const listaDePost = (post) => {
     const divWrap = document.createElement('div');
     divWrap.innerHTML += 
     `
@@ -56,15 +56,8 @@ export default (posts) => {
        
     const divPainter = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
-    divPainter.appendChild(eliminarPost(post));
-    });
+    divPainter.appendChild(listaDePost(post));
+    })
     
-    /*privacidad:
-    const divModoPost = CreateChildNode.querySelector(`#estado-${posts.id}`)
-    divModoPost.addEventListener('change', () => {
-      const nuevoEstado = divModoPost.value;
-      privacidadPost(posts, nuevoEstado)
-    });
-    */
 return CreateChildNode
 }
