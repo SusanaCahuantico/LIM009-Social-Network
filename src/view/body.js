@@ -1,5 +1,5 @@
 import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
-// import {currentUser} from '../controller/firebase.js';
+import {getPost} from '../controller/firebase.js';
 
 const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
@@ -34,10 +34,12 @@ export default (posts) => {
     <div class="bodyTmp">
     <div id="painter">
     </div>
-    <select id="estado-${posts.id}">
-    <option value="privado">Privado</option>
-    <option value="publico">Público</option>
-    </select>
+      <div>
+        <select id="estado">
+          <option value="privado">Privado</option>
+          <option value="publico">Público</option>
+        </select>
+      </div>
     <form class="formulario" action="">
     <input type="text" id="tareaInput" placeholder="Agrega tu tarea">
     <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
@@ -51,6 +53,7 @@ export default (posts) => {
     
     const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
     botonAgregar.addEventListener('click', agregarNota)
+    getPost
        
     const divPainter = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
