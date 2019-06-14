@@ -24,9 +24,9 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (content, privacidad) => {
+   export const dataPost = (content) => {
       return firebase.firestore().collection("notas").add ({
-         nota: content, 
+         nota: content,
       })
    }
    
