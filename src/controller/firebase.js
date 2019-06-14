@@ -9,9 +9,7 @@ export const NewUsers = (email, password) => {
  }
 
  // Cerrar sesión: 
- export const singOut = ()=> {
-    return firebase.auth().singOut();
- }
+ export const signOut = () => firebase.auth().signOut()
 
  //Login con google
  export const LogGoogle = () => {
@@ -26,9 +24,10 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (content) => {
+   export const dataPost = (content, privacidad) => {
       return firebase.firestore().collection("notas").add ({
          nota: content,  
+         privacidad
       })
    }
    
@@ -38,7 +37,7 @@ export const NewUsers = (email, password) => {
    .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
-         doc.privacidad === 'publico'
+        doc.privacidad === 'publico '
          data.push({ id: doc.id, ...doc.data() })
       });
       callback(data);
@@ -64,9 +63,4 @@ export const editarPost = (idPost, nuevo) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
      nota: nuevo,  
 })
-}
-
-/* Leer datos del usuario:*/
-export const getUser = () => {
-   return firebase.firestore().collection("users").where
 }
