@@ -1,4 +1,4 @@
-import {agregarNota, eliminarNota, nuevaNota, privacidadPost} from '../view-controller/promises.js';
+import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
 // import {currentUser} from '../controller/firebase.js';
 
 const eliminarPost = (post) => {

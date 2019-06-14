@@ -34,7 +34,6 @@ describe('lista de notas', () => {
       .then(() => getPost(
         (data) => {
           const result = data.find((note) => note.id === 'abc1d');
-          console.log(result)
           expect(result).toBe(undefined);
           done()
         }
