@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, singOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, privaciPost} from "../controller/firebase.js";
+import { NewUsers, LogUsers, singOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost} from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -94,10 +94,3 @@ export const nuevaNota = (post, nota) =>{
     data.message = 'Lo sentimos, no se agregar la nota';
   })
   }
-
-/* Privacidad: */
-export const privacidadPost = (post, nuevoEstado) => {
-  if(currentUser().uid === post.idUser){
-  privaciPost(post.id, nuevoEstado)
-  }
-}

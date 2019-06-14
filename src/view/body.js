@@ -1,4 +1,4 @@
-import {agregarNota, eliminarNota, nuevaNota, privacidadPost} from '../view-controller/promises.js';
+import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
 // import {currentUser} from '../controller/firebase.js';
 
 const eliminarPost = (post) => {
@@ -57,11 +57,12 @@ export default (posts) => {
     divPainter.appendChild(eliminarPost(post));
     });
     
-    //privacidad:
+    /*privacidad:
     const divModoPost = CreateChildNode.querySelector(`#estado-${posts.id}`)
     divModoPost.addEventListener('change', () => {
       const nuevoEstado = divModoPost.value;
       privacidadPost(posts, nuevoEstado)
     });
+    */
 return CreateChildNode
 }
