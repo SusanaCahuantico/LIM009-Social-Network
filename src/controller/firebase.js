@@ -63,3 +63,9 @@ export const editarPost = (idPost, nuevo) => {
      nota: nuevo,  
 })
 }
+
+export const estadoPost = (idPost, nuevoEstado) => {
+   return firebase.firestore().collection("notas").doc(idPost).update({
+     estado: nuevoEstado,  
+})
+}

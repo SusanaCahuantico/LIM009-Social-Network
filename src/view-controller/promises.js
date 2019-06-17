@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, estadoPost} from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -44,11 +44,12 @@ export const out = () => {
 
 export const google = () => {
   LogGoogle()
-    .then(function (result) {
+    .then((result) => {
       var token = result.credential.accessToken;
+      console.log(token);
       var user = result.user;
     })
-    .catch(function (error) {
+    .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
       var email = error.email;
@@ -96,8 +97,9 @@ export const nuevaNota = (post, nota) =>{
   }
 
 /* Privacidad: */
-// export const privacidadPost = (post, nuevoEstado) => {
-//   if(currentUser().uid === post.idUser){
-//   privaciPost(post.id, nuevoEstado)
-//   }
-// }
+export const privacidadPost = (post, nuevoEstado) => {
+  estadoPost(post, nuevoEstado)
+  if(currentUser().uid === post.idUser){
+  privaciPost(post.id, nuevoEstado)
+  }
+}
