@@ -1,12 +1,12 @@
 // Registrar usuarios:
 export const NewUsers = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
- };
+};
 
  // iniciar Sesión:
  export const LogUsers = (email, password)=> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
- }
+}
 
  // Cerrar sesión: 
  export const signOut = () => firebase.auth().signOut()
@@ -15,13 +15,13 @@ export const NewUsers = (email, password) => {
  export const LogGoogle = () => {
    const provider = new firebase.auth.GoogleAuthProvider();
    return firebase.auth().signInWithPopup(provider)
- }
+}
 
- //Login con facebook
+//Login con facebook
  export const LogFacebook = () => {
    const provider = new firebase.auth.FacebookAuthProvider();
    return firebase.auth().signInWithPopup(provider)
-   }
+}
 
 //Agregar post:
 export const dataPost = (content,uid, name, modoPost) => {
