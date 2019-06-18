@@ -1,5 +1,5 @@
 import { components } from '../view-controller/index.js'
-import { getPost} from '../controller/firebase.js';
+import { getPost, usuarioActivo} from '../controller/firebase.js';
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
@@ -20,11 +20,16 @@ export const changeView = (route) => {
      case '#/registrate': father.appendChild(components.home2())
      break;
      case '#/perfil':
+    //  usuarioActivo ((user) => {
+     if (usuarioActivo!=null){
        getPost((data) => {
          father.innerHTML = '';
          father.appendChild(components.header(data))
          father.appendChild(components.body(data))
        })
+      } else {(usuarioActivo=null)
+        father.appendChild(components.home())
+    }
      break;
      default:
          break;

@@ -72,14 +72,14 @@ export const estadoPost = (idPost, nuevoEstado) => {
    }
    
    //Agregar usuarios:
-   export const dataBase = (Nombre, lastName, emailRegister, cred) => {
-   return firebase.firestore().collection("users").doc(cred.user.uid).set({
-   Nombre : Nombre,
-   Apellido : lastName,
-   Email : emailRegister,
-   name: cred.user.displayName,
-   });
-   }
+  //  export const dataBase = (Nombre, lastName, emailRegister, cred) => {
+  //  return firebase.firestore().collection("users").doc(cred.user.uid).set({
+  //  Nombre : Nombre,
+  //  Apellido : lastName,
+  //  Email : emailRegister,
+  //  name: cred.user.displayName,
+  //  });
+  //  }
    
    // imprimir usuario:
    export const getUserFirestore = (uid) => {
@@ -101,7 +101,7 @@ export const estadoPost = (idPost, nuevoEstado) => {
    }
    
    //observador:
-   export const observador = (obs) => {
-   return firebase.auth().onAuthStateChanged(obs);
+   export const observador = () => {
+   return firebase.auth().onAuthStateChanged();
    }
    

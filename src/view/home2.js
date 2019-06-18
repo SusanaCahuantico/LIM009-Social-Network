@@ -9,7 +9,7 @@ export default ()=>{
     <input id="lastName" type="text" placeholder="Apellido"/> </br>
     <input id="emailRegister" type="text" placeholder="Email"/> </br>
     <input id="passwordRegister" type="password" placeholder="Password"/> </br>
-    <button id="btnRegister">¡Registrate!</button> 
+    <a href="#/perfil"><button id="btnRegister">¡Registrate!</button></a> 
     </div>`
     ;
     CreateChildNode.innerHTML = Content;
