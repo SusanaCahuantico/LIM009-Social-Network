@@ -1,4 +1,4 @@
-import{ out,changeRoute } from '../view-controller/promises.js';
+// import{ out,changeRoute } from '../view-controller/promises.js';
 /* import { createPost } from './body.js';
   
 export const paintUser = (user, posts) => {

@@ -69,26 +69,10 @@ export const dataBase = (Nombre, lastName, emailRegister, cred) => {
       });
 }
 
-// imprimir usuario:
-export const getUserFirestore = (uid) => {
-   return firebase.firestore().collection("users").doc(uid).get();
-}
-
-//Leer documento usuario:
-export const getUser = (uid, callback) => {
-   firebase.firestore().collection("users").doc(uid)
-   .onSnapshot(doc => {
-      const data = doc.data();
-      callback(data)
-   });
-}
-
-//Usuario activo:
-export const usuarioActivo = () => {
-   return firebase.auth().currentUser;
-}
-
-//observador:
-export const observador = (obs) => {
-   return firebase.auth().onAuthStateChanged(obs);
+/* editar notas: */
+export const editarPost = (idPost, nuevo, nuevoEstado) => {
+   return firebase.firestore().collection("notas").doc(idPost).update({
+     nota: nuevo,  
+     estado: nuevoEstado,
+})
 }

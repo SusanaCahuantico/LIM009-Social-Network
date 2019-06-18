@@ -1,4 +1,4 @@
-import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
+import {agregarNota, eliminarNota, nuevaNota, privacidadPost} from '../view-controller/promises.js';
 
 const pintarPost = (post) => {
     const divWrap = document.createElement('div');
@@ -63,7 +63,7 @@ export default (posts) => {
     const divPaint = CreateChildNode.querySelector('#painter')
     divPaint.innerHTML = pintarUsuario;
     */
-
+   
     const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
     botonAgregar.addEventListener('click', agregarNota)
        

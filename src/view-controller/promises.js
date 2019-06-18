@@ -1,5 +1,4 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, getUserFirestore} from "../controller/firebase.js";
-// import { changeView } from "./routes.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost} from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -46,11 +45,12 @@ export const out = () => {
 
 export const google = () => {
   LogGoogle()
-    .then(function (result) {
+    .then((result) => {
       var token = result.credential.accessToken;
+      console.log(token);
       var user = result.user;
     })
-    .catch(function (error) {
+    .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
       var email = error.email;
@@ -97,15 +97,68 @@ export const nuevaNota = (post, nota) =>{
   })
   }
 
-// pintar usuario:
-export const getData = (uid) => {
-  getUserFirestore(uid)
-  .then(function(doc) {
-    let painter = document.querySelector('#painter');
-    painter.innerHTML = doc.get("Nombre");
-  })
-  .catch(function(error){
-    console.log("Error :", error.message);
-  });
+/* Privacidad: */
+export const privacidadPost = (post, nuevoEstado) => {
+  editarPost(post, nuevoEstado)
+  if(currentUser().uid === post.idUser){
+  privaciPost(post.id, nuevoEstado)
+  }
 }
 
+//Agregar post:
+export const dataPost = (content,uid, name, modoPost) => {
+  return firebase.firestore().collection("notas").add ({
+  nota: content,
+  userId: uid,
+  name: name,
+  estado: modoPost,
+  })
+  }
+
+  //Leer documentos 
+export const getPost = (callback) => {
+  firebase.firestore().collection("notas")
+  .onSnapshot((querySnapshot) => {
+  const data = [];
+  querySnapshot.forEach((doc) => {
+  doc.privacidad === 'publico '
+  data.push({ id: doc.id, ...doc.data() })
+  });
+  callback(data);
+  });
+  } 
+
+  //Agregar usuarios:
+export const dataBase = (Nombre, lastName, emailRegister, cred) => {
+  return firebase.firestore().collection("users").doc(cred.user.uid).set({
+  Nombre : Nombre,
+  Apellido : lastName,
+  Email : emailRegister,
+  name: cred.user.displayName,
+  });
+  }
+
+// imprimir usuario:
+export const getUserFirestore = (uid) => {
+  return firebase.firestore().collection("users").doc(uid).get();
+  }
+  
+  //Leer documento usuario:
+  export const getUser = (uid, callback) => {
+  firebase.firestore().collection("users").doc(uid)
+  .onSnapshot(doc => {
+  const data = doc.data();
+  callback(data)
+  });
+  }
+  
+  //Usuario activo:
+  export const usuarioActivo = () => {
+  return firebase.auth().currentUser;
+  }
+  
+  //observador:
+  export const observador = (obs) => {
+  return firebase.auth().onAuthStateChanged(obs);
+  }
+  

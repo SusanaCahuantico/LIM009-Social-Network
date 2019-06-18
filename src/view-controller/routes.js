@@ -7,9 +7,6 @@ const changeTmp = (hash) => {
     } else {
       return changeView(hash);
     }
-   // else {
-     // return changeView('#/perfil');
-   // }
 }
 
 export const changeView = (route) => {
