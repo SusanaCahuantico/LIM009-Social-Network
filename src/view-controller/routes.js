@@ -1,5 +1,5 @@
 import { components } from '../view-controller/index.js'
-import { getPost} from '../controller/firebase.js';
+import { getPost, usuarioActivo} from '../controller/firebase.js';
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
@@ -23,7 +23,7 @@ export const changeView = (route) => {
        getPost((data) => {
          father.innerHTML = '';
          father.appendChild(components.header(data))
-         father.appendChild(components.body(data))
+         father.appendChild(components.body(data, usuarioActivo))
        })
      break;
      default:

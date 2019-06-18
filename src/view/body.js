@@ -1,6 +1,6 @@
 import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
 
-const eliminarPost = (post) => {
+const pintarPost = (post) => {
     const divWrap = document.createElement('div');
     divWrap.innerHTML += 
     `
@@ -26,6 +26,18 @@ const eliminarPost = (post) => {
     return divWrap;
 }
 
+export const pintarUsuario = (user) => {
+  const divPainter = document.createElement('div');
+  const perfil = `
+  <div>
+     <h3 id="usuario"> ${user.Nombre} </h3>
+  </div>
+  `
+  divPainter.innerHTML = perfil
+
+  return divPainter;
+}
+
 export default (posts) => {
     const CreateChildNode = document.createElement("div");
     const Content =`
@@ -47,13 +59,17 @@ export default (posts) => {
     </body>
     ` ;
     CreateChildNode.innerHTML = Content;
-    
+    /*
+    const divPaint = CreateChildNode.querySelector('#painter')
+    divPaint.innerHTML = pintarUsuario;
+    */
+
     const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
     botonAgregar.addEventListener('click', agregarNota)
        
-    const divPainter = CreateChildNode.querySelector('#wrap')
+    const divWrap = CreateChildNode.querySelector('#wrap')
     posts.forEach(post => {
-    divPainter.appendChild(eliminarPost(post));
+    divWrap.appendChild(pintarPost(post));
     });
     
     //privacidad:
@@ -62,5 +78,6 @@ export default (posts) => {
       const nuevoEstado = divModoPost.value;
       privacidadPost(posts, nuevoEstado)
     });
+
 return CreateChildNode
 }

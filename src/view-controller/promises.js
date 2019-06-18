@@ -1,4 +1,5 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, getUserFirestore} from "../controller/firebase.js";
+// import { changeView } from "./routes.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -19,9 +20,10 @@ export const register = () => {
   const lastName = document.getElementById('lastName').value;
   const name = document.getElementById('name').value;
   NewUsers(email, password)
-    .then(() => dataBase(name, lastName, email))
+    .then((cred) => dataBase(name, lastName, email, cred.user.uid))
      alert ('registrado')
-    // .then(() => #/login('hanschange')
+    // .then(() => exit())
+    //.then(() => changeView)
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -95,9 +97,20 @@ export const nuevaNota = (post, nota) =>{
   })
   }
 
+// pintar usuario:
+export const getData = (uid) => {
+  getUserFirestore(uid)
+  .then(function(doc) {
+    let painter = document.querySelector('#painter');
+    painter.innerHTML = doc.get("Nombre");
+  })
+  .catch(function(error){
+    console.log("Error :", error.message);
+  });
+}
+
 /* Privacidad: */
 // export const privacidadPost = (post, nuevoEstado) => {
 //   if(currentUser().uid === post.idUser){
 //   privaciPost(post.id, nuevoEstado)
 //   }
-// }

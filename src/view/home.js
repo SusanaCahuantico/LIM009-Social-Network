@@ -3,7 +3,7 @@ import { logear, google, facebook } from "../view-controller/promises.js";
 export default ()=>{
     const CreateChildNode = document.createElement("div");
     const Content = `<div class = "col-xs-12 col-lg-6"><img src="../images/logo.png" alt=""/></div>
-    <div class = "col-xs-12 col-lg-6"><img src="../images/titulo.PNG" alt=""/>
+    <div class="col-xs-12 col-lg-6"><img src="../images/titulo.PNG" alt=""/>
     <h2>Bienvenida!</h2>
     <input id="emailLogin" type="text" placeholder="Email"/> </br>
     <input id="contraseñaLogin" type="password" placeholder="Password"/> </br>
