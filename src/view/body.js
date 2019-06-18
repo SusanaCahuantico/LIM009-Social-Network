@@ -1,4 +1,4 @@
-import {agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
+import {agregarNota, eliminarNota, nuevaNota, privacidadPost} from '../view-controller/promises.js';
 
 const eliminarPost = (post) => {
     const divWrap = document.createElement('div');
