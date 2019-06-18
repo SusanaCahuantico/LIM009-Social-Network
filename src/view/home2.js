@@ -2,6 +2,7 @@ import { register } from "../view-controller/promises.js";
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
+    CreateChildNode.innerHTML = '';
     const Content = `<div class = "col-xs-12 col-lg-6"><img src="../images/logo.png" alt=""/></div>
     <div class = "col-xs-12 col-lg-6"><img src="../images/titulo.PNG" alt=""/>
     <h2>¡Empecemos con tu registro!</h2>

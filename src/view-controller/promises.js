@@ -109,8 +109,3 @@ export const getData = (uid) => {
   });
 }
 
-/* Privacidad: */
-// export const privacidadPost = (post, nuevoEstado) => {
-//   if(currentUser().uid === post.idUser){
-//   privaciPost(post.id, nuevoEstado)
-//   }
