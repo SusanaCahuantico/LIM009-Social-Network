@@ -103,3 +103,4 @@ export const privacidadPost = (post, nuevoEstado) => {
   privaciPost(post.id, nuevoEstado)
   }
 }
+

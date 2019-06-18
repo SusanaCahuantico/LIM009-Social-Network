@@ -57,15 +57,51 @@ export const dataBase = (name, lastName, emailRegister) => {
       })
 }
 
-/* editar notas: */
-export const editarPost = (idPost, nuevo) => {
-   return firebase.firestore().collection("notas").doc(idPost).update({
-     nota: nuevo,  
-})
-}
-
 export const estadoPost = (idPost, nuevoEstado) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
      estado: nuevoEstado,  
 })
 }
+
+  /* editar notas: */
+   export const editarPost = (idPost, nuevo, modoEstado) => {
+   return firebase.firestore().collection("notas").doc(idPost).update({
+   nota: nuevo,
+   estado: modoEstado, 
+   })
+   }
+   
+   //Agregar usuarios:
+   export const dataBase = (Nombre, lastName, emailRegister, cred) => {
+   return firebase.firestore().collection("users").doc(cred.user.uid).set({
+   Nombre : Nombre,
+   Apellido : lastName,
+   Email : emailRegister,
+   name: cred.user.displayName,
+   });
+   }
+   
+   // imprimir usuario:
+   export const getUserFirestore = (uid) => {
+   return firebase.firestore().collection("users").doc(uid).get();
+   }
+   
+   //Leer documento usuario:
+   export const getUser = (uid, callback) => {
+   firebase.firestore().collection("users").doc(uid)
+   .onSnapshot(doc => {
+   const data = doc.data();
+   callback(data)
+   });
+   }
+   
+   //Usuario activo:
+   export const usuarioActivo = () => {
+   return firebase.auth().currentUser;
+   }
+   
+   //observador:
+   export const observador = (obs) => {
+   return firebase.auth().onAuthStateChanged(obs);
+   }
+   
