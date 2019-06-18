@@ -62,5 +62,6 @@ export default (posts) => {
       const nuevoEstado = divModoPost.value;
       privacidadPost(posts, nuevoEstado)
     });
+    
 return CreateChildNode
 }

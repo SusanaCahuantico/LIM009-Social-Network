@@ -24,11 +24,14 @@ export const NewUsers = (email, password) => {
    }
 
 //Agregar post:
-   export const dataPost = (content) => {
-      return firebase.firestore().collection("notas").add ({
-         nota: content,
-      })
-   }
+export const dataPost = (content,uid, name, modoPost) => {
+   return firebase.firestore().collection("notas").add ({
+   nota: content,
+   userId: uid,
+   name: name,
+   estado: modoPost,
+})
+}
    
 //Leer documentos   
   export const getPost = (callback) => {
@@ -48,15 +51,6 @@ export const NewUsers = (email, password) => {
     return firebase.firestore().collection("notas").doc(idPost).delete()
 }
    
-//Agregar usuarios:
-export const dataBase = (name, lastName, emailRegister) => {
-      return firebase.firestore().collection("users").add ({
-         Nombre : name,
-         Apellido : lastName,
-         Email : emailRegister,
-      })
-}
-
 export const estadoPost = (idPost, nuevoEstado) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
      estado: nuevoEstado,  
