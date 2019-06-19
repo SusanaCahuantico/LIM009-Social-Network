@@ -31,6 +31,8 @@ export default (posts) => {
       divWrap.appendChild(pintarPost(post));
     });
     
+    const divPainter = CreateChildNode.querySelector('#painter')
+    divPainter.innerHTML = 'Bienvenido';
     /*privacidad:
     const divModoPost = CreateChildNode.querySelector('estado')
     divModoPost.addEventListener('change', () => {
@@ -39,8 +41,18 @@ export default (posts) => {
     });
     */
     return CreateChildNode
-  }
-
+  } 
+/*
+   const pintarUsuario = (user) => {
+     const divUser = document.createElement('div');
+          usuario.innerHTML = `
+          <div>
+          <p id="idUser"> ${user.name} </p>
+          </div>
+          `;
+      return divUser;    
+   }
+*/
    const pintarPost = (post) => {
      const divWrap = document.createElement('div');
      divWrap.innerHTML += 
