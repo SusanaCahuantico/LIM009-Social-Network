@@ -7,7 +7,7 @@ export const logear = () => {
   LogUsers(email, password)
     .then(() => console.log("Entrando"))
     .catch(function (error) {
-      alert("Usuario o contraseña invalida");
+      alert("Usuario o invalido");
 
     });
 }
