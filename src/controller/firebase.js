@@ -3,15 +3,15 @@ export const NewUsers = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
 };
 
- // iniciar Sesión:
+// iniciar Sesión:
  export const LogUsers = (email, password)=> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
 }
 
- // Cerrar sesión: 
+// Cerrar sesión: 
  export const signOut = () => firebase.auth().signOut()
 
- //Login con google
+//Login con google
  export const LogGoogle = () => {
    const provider = new firebase.auth.GoogleAuthProvider();
    return firebase.auth().signInWithPopup(provider)
@@ -57,7 +57,7 @@ export const estadoPost = (idPost, nuevoEstado) => {
 })
 }
 
-  /* editar notas: */
+/* editar notas: */
    export const editarPost = (idPost, nuevo, modoEstado) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
    nota: nuevo,
@@ -66,14 +66,14 @@ export const estadoPost = (idPost, nuevoEstado) => {
    }
    
    //Agregar usuarios:
-  //  export const dataBase = (Nombre, lastName, emailRegister, cred) => {
-  //  return firebase.firestore().collection("users").doc(cred.user.uid).set({
-  //  Nombre : Nombre,
-  //  Apellido : lastName,
-  //  Email : emailRegister,
-  //  name: cred.user.displayName,
-  //  });
-  //  }
+   export const dataBase = (Nombre, lastName, emailRegister, cred) => {
+    return firebase.firestore().collection("users").doc(cred.user.uid).set({
+    Nombre : Nombre,
+    Apellido : lastName,
+    Email : emailRegister,
+    name: cred.user.displayName,
+    });
+    }
    
    // imprimir usuario:
    export const getUserFirestore = (uid) => {
