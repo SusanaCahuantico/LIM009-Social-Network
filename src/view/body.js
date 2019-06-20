@@ -12,11 +12,13 @@ export default (posts) => {
      <option value="privado">Privado</option>
      <option value="publico">Público</option>
      </select>
+     <div class="box"
      <form class="formulario" action="">
      <input class = "input" type="text" id="tareaInput" placeholder="Agrega tu tarea">
      <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
      </form>
      <div id="wrap">
+     </div>
      </div>
      </div>
    </body>

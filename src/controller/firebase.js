@@ -24,12 +24,10 @@ export const LogFacebook = () => {
 }
 
 //Agregar post:
-export const dataPost = (content, uid, modoPost) => {
+export const dataPost = (content, estado) => {
    return firebase.firestore().collection("notas").add ({
    nota: content,
-   userId: uid,
-   //name: name,
-   estado: modoPost,
+   estado: estado
 })
 }
    
@@ -50,30 +48,24 @@ export const getPost = (callback) => {
  export const deletePost = (idPost) => {
     return firebase.firestore().collection("notas").doc(idPost).delete()
 }
-   
-export const estadoPost = (idPost, nuevoEstado) => {
-   return firebase.firestore().collection("notas").doc(idPost).update({
-     estado: nuevoEstado,  
-})
-}
 
-/* editar notas: */
-export const editarPost = (idPost, nuevo) => {
+  /* editar notas: */
+   export const editarPost = (idPost, nuevo, estado) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
    nota: nuevo,
+   estado: estado
    })
    }
    
- //Agregar usuarios:
-export const dataBase = (Nombre, lastName, emailRegister, uid ) => {
-   return firebase.firestore().collection("users").doc(uid).set({
-    Nombre : Nombre,
-    Apellido : lastName,
-    Email : emailRegister,
-    idUser: uid
-  //  name: cred.user.displayName,
-    });
-    }
+   //Agregar usuarios:
+   export const dataBase = (Nombre, lastName, emailRegister, cred) => {
+   return firebase.firestore().collection("users").doc(cred.user.uid).set({
+   Nombre : Nombre,
+   Apellido : lastName,
+   Email : emailRegister,
+   name: cred.user.displayName
+   });
+   }
    
  // imprimir usuario:
 export const getUserFirestore = (uid) => {

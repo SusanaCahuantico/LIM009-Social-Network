@@ -28,10 +28,12 @@ export const changeView = (route) => {
           })
       //  })
       // if { user.id === id.usuarioActivo}      
-      //} else {
-     // (usuarioActivo=null)
-       // father.appendChild(components.home())
-  // 
+       getPost((data) => {
+         father.innerHTML = '';
+         father.appendChild(components.header(data))
+         father.appendChild(components.body(data))
+       })
+      
      break;
      default:
          break;
