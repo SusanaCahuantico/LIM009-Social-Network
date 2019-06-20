@@ -32,7 +32,10 @@ export default (posts) => {
     });
     
     const divPainter = CreateChildNode.querySelector('#painter')
-    divPainter.innerHTML = 'Bienvenido';
+    users.forEach(user => {
+      divPainter.appendChild(pintarUsuario(user));
+    })
+
     /*privacidad:
     const divModoPost = CreateChildNode.querySelector('estado')
     divModoPost.addEventListener('change', () => {
@@ -42,22 +45,22 @@ export default (posts) => {
     */
     return CreateChildNode
   } 
-/*
+
    const pintarUsuario = (user) => {
      const divUser = document.createElement('div');
           usuario.innerHTML = `
           <div>
-          <p id="idUser"> ${user.name} </p>
+          <p id="idUser"> ${user.Nombre} </p>
           </div>
           `;
       return divUser;    
    }
-*/
+
    const pintarPost = (post) => {
      const divWrap = document.createElement('div');
      divWrap.innerHTML += 
       `
-       <textarea readonly id="area">${post.nota}</textarea>   
+       <textarea readonly id="area" class="post-nota">${post.nota}</textarea>   
        <button class="boton" id="btn-eliminar-${post.id}"> Eliminar </button>
        <button class="boton" id='btn-editar'> Editar </button>
        <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
