@@ -78,11 +78,6 @@ header .contenedor {
 }
 
 .boton {
-<<<<<<< HEAD
-    border: 2px solid #2f382f;
-    padding: 10px;
-}
-=======
     cursor: pointer;
     outline: none;
     border: none;
@@ -132,4 +127,3 @@ header .contenedor {
 .box {
     padding: 0  15px 0 15px;
 }
->>>>>>> cbbbd6666c014de47ff5014dc43d67642cbda684
