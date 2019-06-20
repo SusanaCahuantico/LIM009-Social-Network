@@ -78,5 +78,52 @@ header .contenedor {
 }
 
 .boton {
-    border: inset;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 6px 20px;
+    background: rgb(180, 250, 18);
+    color: black;
+    text-align: center;
+    border-radius: 8px;
+    margin: 2%;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.botonInicio {
+    padding: 3px 10px;
+    background: rgb(180, 250, 18);
+    color: black;
+    text-align: center;
+    border-radius: 8px;
+    margin: 1%;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    padding: 1%;
+}
+
+.input{
+    outline: none;
+    background: #f0ffea;
+    margin-bottom: 7px;
+    height: 15px;
+    padding: 10px 35px;
+    border-radius: 15px;
+    border: 1px solid #e6e6e6;
+}
+
+.iconos{
+    width: 60px;
+	height: auto;
+    border: none;
+}
+
+.box {
+    padding: 0  15px 0 15px;
 }
