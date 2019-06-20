@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, estadoPost} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost} from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
@@ -21,7 +21,6 @@ export const register = () => {
   NewUsers(email, password)
     .then(() => dataBase(name, lastName, email))
      alert ('registrado')
-    // .then(() => #/login('hanschange')
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -73,13 +72,24 @@ export const facebook = () => {
 
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
-dataPost(tareaInput)
+const estados = document.getElementById('estado').value;
+dataPost(tareaInput,estados)
 .then((data) => {
   data.message = 'Nota agregada'
 }).catch((data) => {
   data.message = 'Lo sentimos, no se agregar la nota';
 })
 }
+
+// export const agregarEstado = () =>{
+//   const estado = document.getElementById('estado').value;
+//   dataPost(estado)
+//   .then((data) => {
+//     data.message = 'Nota agregada'
+//   }).catch((data) => {
+//     data.message = 'Lo sentimos, no se agregar la nota';
+//   })
+//   }
 
 export const eliminarNota = (post) => {
   deletePost(post.id)
@@ -97,9 +107,9 @@ export const nuevaNota = (post, nota) =>{
   }
 
 /* Privacidad: */
-export const privacidadPost = (post, nuevoEstado) => {
-  estadoPost(post, nuevoEstado)
-  if(currentUser().uid === post.idUser){
-  privaciPost(post.id, nuevoEstado)
-  }
-}
+// export const privacidadPost = (post, nuevoEstado) => {
+//   estadoPost(post, nuevoEstado)
+//   if(currentUser().uid === post.idUser){
+//   privaciPost(post.id, nuevoEstado)
+//   }
+// }

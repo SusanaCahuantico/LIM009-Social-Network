@@ -26,9 +26,7 @@ export const changeView = (route) => {
          father.appendChild(components.header(data))
          father.appendChild(components.body(data))
        })
-      } else {(usuarioActivo=null)
-        father.appendChild(components.home())
-    }
+      
      break;
      default:
          break;
