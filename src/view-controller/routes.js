@@ -1,13 +1,15 @@
-import { components } from '../view-controller/index.js'
-import { getPost} from '../controller/firebase.js';
+import {loginUser} from '../view/login.js';
+import {registerUSer} from '../view/registrate.js';
+import { profileUser} from '../view/profile.js';
+import { getPost, usuarioActivo, observador} from '../controller/firebase.js';
+import {getName} from '../view-controller/promises.js'
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
-      return changeView('#/perfil');
-    } else if (hash === '#/perfil' || hash === '#/home') {
-      return changeView(hash);
+      return changeView('#/home');
+ 
     } else {
-      return changeView('#/perfil');
+      return changeView(hash);
     }
 }
 
@@ -15,27 +17,41 @@ export const changeView = (route) => {
     const father = document.getElementById("father");
     father.innerHTML = '';
  switch (route) {
-     case '#/home':  father.appendChild(components.home())
+     case 'home':
+       father.innerHTML = '';  
+     father.appendChild(loginUser());
      break;
-     case '#/registrate': father.appendChild(components.home2())
+     case 'registrate': father.appendChild(registerUSer())
      break;
-     case '#/perfil':
-        getPost((data) => {
-            father.innerHTML = '';
-            father.appendChild(components.header(data))
-            father.appendChild(components.body(data))
-          })
-      // if { user.id === id.usuarioActivo}      
-       getPost((data) => {
-         father.innerHTML = '';
-         father.appendChild(components.header(data))
-         father.appendChild(components.body(data))
-       })
-      
-     break;
-     default:
+     case 'profile': {
+       father.innerHTML = '';
+       const mostrarPerfil = (user) => {
+         getName(user)
+         .then((name) => {
+           getPost((posts) => {
+             father.innerHTML = '';
+             father.appendChild(profileUser({
+               ...user,
+               name,
+             }, posts))
+           })
+         });
+       }
+       const u = usuarioActivo();
+       if(u) {
+         mostrarPerfil(u)
+       } else {
+         observador(mostrarPerfil)
+         if(u) {
+           mostrarPerfil(u)
+         } 
+        }
          break;
- }   
+       } 
+       default:
+      //father.appendChild(Login());
+       break;
+}
 }
 
 export const init = () => {

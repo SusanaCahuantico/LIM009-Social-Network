@@ -24,16 +24,19 @@ export const LogFacebook = () => {
 }
 
 //Agregar post:
-export const dataPost = (content, estado) => {
+export const dataPost = (uid, name, textPost, modoPost, date) => {
    return firebase.firestore().collection("notas").add ({
-   nota: content,
-   estado: estado
+      uid: uid,
+      name: name,
+   nota: textPost,
+   state: modoPost,
+   date: date,
 })
 }
    
 //Leer documentos   
 export const getPost = (callback) => {
-   firebase.firestore().collection("notas")
+   firebase.firestore().collection("notas").orderBy('date', 'desc')
    .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
@@ -50,37 +53,20 @@ export const getPost = (callback) => {
 }
 
   /* editar notas: */
-   export const editarPost = (idPost, nuevo, estado) => {
+   export const editarPost = (idPost, postText, modePost) => {
    return firebase.firestore().collection("notas").doc(idPost).update({
-   nota: nuevo,
-   estado: estado
+   nota: postText,
+   state: modePost,
    })
    }
    
    //Agregar usuarios:
-   export const dataBase = (Nombre, lastName, emailRegister, cred) => {
+   export const dataBase = (cred) => {
    return firebase.firestore().collection("users").doc(cred.user.uid).set({
-   Nombre : Nombre,
-   Apellido : lastName,
-   Email : emailRegister,
-   name: cred.user.displayName
+   name: cred.user.displayName,
    });
    }
    
- // imprimir usuario:
-export const getUserFirestore = (uid) => {
-return firebase.firestore().collection("users").doc(uid).get();
-}
-   
-//Leer documento usuario:
-export const getUser = (uid, callback) => {
-   firebase.firestore().collection("users").doc(uid)
-   .onSnapshot(doc => {
-   const data = doc.data();
-   callback(data)
-   });
-   }
-
 //Usuario activo:
 export const usuarioActivo = () => {
    return firebase.auth().currentUser;
@@ -89,4 +75,8 @@ export const usuarioActivo = () => {
 //observador:
 export const observador = (userA) => {
    return firebase.auth().onAuthStateChanged(userA);
+}
+
+export const db = () => {
+   return firebase.firestore();
 }
