@@ -73,14 +73,14 @@ return firebase.firestore().collection("users").doc(uid).get();
 }
    
 //Leer documento usuario:
-/*export const getUser = (uid, callback) => {
+export const getUser = (uid, callback) => {
    firebase.firestore().collection("users").doc(uid)
    .onSnapshot(doc => {
    const data = doc.data();
    callback(data)
    });
    }
-*/
+
 //Usuario activo:
 export const usuarioActivo = () => {
    return firebase.auth().currentUser;
