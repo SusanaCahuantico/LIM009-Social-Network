@@ -1,10 +1,6 @@
-import Home from "./view/home.js";
-import { changeView } from './view-controller/routes.js';
 
-const initRouter = () => {
-  changeView(window.location.hash);
-  window.addEventListener('hashchange', () => changeView(window.location.hash)
-)}
+import {  init} from './view-controller/routes.js';
+
 
 
 export const initFirebase = () => {
@@ -22,8 +18,10 @@ firebase.initializeApp(config);
 
 window.addEventListener('load', () => {
   initFirebase()
-  initRouter()
-  const FatherElement = document.getElementById('father'); 
-  FatherElement.appendChild(Home());
+
+  init()
+ 
+ /*  const FatherElement = document.getElementById('father'); 
+  FatherElement.appendChild(Home()); */
   
 })

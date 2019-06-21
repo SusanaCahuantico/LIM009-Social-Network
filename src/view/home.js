@@ -10,8 +10,8 @@ export default ()=>{
     <input class="input" id="contraseñaLogin" type="password" placeholder="Password"/> </br>
     <a href="#/perfil"><button class ="botonInicio"id="btnLogin">Log in</button></a>
     <h2>Tambien puedes ingresar con ...</h2>
-    <a href="#/perfil" id="btnFacebook"><img class ="iconos"  src="../images/facebook.png" alt=""/></a> 
-    <a href="#/perfil" id="btnGoogle"><img class ="iconos" src="../images/google.png" alt=""/></a>
+    <img id="btnFacebook"class ="iconos"  src="../images/facebook.png" alt=""/>
+   <img id="btnGoogle" class ="iconos" src="../images/google.png" alt=""/>
     <h2>No tienes un cuenta? <a href="#/registrate"> REGISTRATE!</a> </h2> 
     </div>
     </div>`

@@ -1,10 +1,10 @@
 import { components } from '../view-controller/index.js'
-import { getPost, usuarioActivo} from '../controller/firebase.js';
+import { getPost} from '../controller/firebase.js';
 
-const changeTmp = (hash) => {
+export const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
-      return changeView('#/perfil');
-    } else if (hash === '#/perfil' || hash === '#/home') {
+      return changeView('#/home');
+    } else if (hash === '#/perfil' || hash === '#/home'||hash === '#/registrate' ) {
       return changeView(hash);
     } else {
       return changeView('#/perfil');

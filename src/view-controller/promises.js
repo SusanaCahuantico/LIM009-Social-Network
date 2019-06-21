@@ -1,4 +1,5 @@
 import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, updateUser} from "../controller/firebase.js";
+import{  changeTmp, changeView} from './routes.js'
 
 // Promesa logueo:  
 export const logear = () => {
@@ -24,7 +25,6 @@ export const register = () => {
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorMessage);
     });
 }
 
@@ -44,15 +44,19 @@ export const out = () => {
 export const google = () => {
   LogGoogle()
     .then((result) => {
-      var token = result.credential.accessToken;
-      console.log(token);
+      changeView('#/perfil')
+    
+   
+      var token = result.accessToken;
+      
       var user = result.user;
     })
-    .catch((error) => {
+    .catch((error) => {     
       var errorCode = error.code;
       var errorMessage = error.message;
       var email = error.email;
       var credential = error.credential;
+      
     })
 };
 
@@ -116,4 +120,25 @@ export const nuevaNota = (post, nota) =>{
 
 export const updateUserPerfil = (user,name) =>{      
   updateUser(user.idUser,name);    
+}
+
+export const promiseObs = () => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      console.log(email)
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      // ...
+    } else {
+      // User is signed out.
+      console.log('usuario no activo')
+      // ...
+    }
+  });
 }

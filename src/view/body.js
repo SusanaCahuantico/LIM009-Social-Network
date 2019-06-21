@@ -1,5 +1,5 @@
 import { agregarNota, eliminarNota, nuevaNota } from '../view-controller/promises.js';
-
+import { usuarioActivo } from '../controller/firebase.js'
 export default (posts) => {
   const CreateChildNode = document.createElement("div");
   const Content =
@@ -46,7 +46,11 @@ export default (posts) => {
   });
 
   const divPainter = CreateChildNode.querySelector('#painter')
-  divPainter.innerHTML = 'Bienvenido';
+  divPainter.innerHTML = `
+  ${usuarioActivo().displayName }
+  `;
+
+
   return CreateChildNode
 }
 

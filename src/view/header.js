@@ -1,6 +1,6 @@
-import {out, updateUserPerfil} from '../view-controller/promises.js'
-import {imprimirUsuario} from './userProfile.js'
-export default (user)=>{
+import {out} from '../view-controller/promises.js'
+
+export default ()=>{
         const CreateChildNode = document.createElement("div");
         const Content =`
         <header>
@@ -26,11 +26,5 @@ export default (user)=>{
     const cerrarSesion = CreateChildNode.querySelector('#btnOut')
     cerrarSesion.addEventListener('click', out)
 
-    /*const printUser = CreateChildNode.querySelector('#user')
-    printUser.appendChild( () => {
-        updateUserPerfil(user)
-        imprimirUsuario(user)
-    })
-     */
     return CreateChildNode
 }

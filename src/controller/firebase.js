@@ -61,7 +61,6 @@ export const deletePost = (idPost) => {
   export const dataBase = (uid, Nombre, lastName, emailRegister) => {
   return firebase.firestore().collection("users").doc(uid).set({
   idUser: uid,
-  name: userName,
   Nombre : Nombre,
   Apellido : lastName,
   Email : emailRegister,
@@ -92,8 +91,10 @@ export const deletePost = (idPost) => {
   export const usuarioActivo = () => {
   return firebase.auth().currentUser;
   }
-  
+  /*
   //observador:
   export const observador = () => {
   return firebase.auth().onAuthStateChanged();
   }
+
+  */
