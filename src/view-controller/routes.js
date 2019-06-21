@@ -1,15 +1,13 @@
-import {loginUser} from '../view/login.js';
-import {registerUSer} from '../view/registrate.js';
-import { profileUser} from '../view/profile.js';
-import { getPost, usuarioActivo, observador} from '../controller/firebase.js';
-import {getName} from '../view-controller/promises.js'
+import { components } from '../view-controller/index.js'
+import { getPost, usuarioActivo} from '../controller/firebase.js';
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
-      return changeView('#/home');
- 
-    } else {
+      return changeView('#/perfil');
+    } else if (hash === '#/perfil' || hash === '#/home') {
       return changeView(hash);
+    } else {
+      return changeView('#/perfil');
     }
 }
 
@@ -17,41 +15,22 @@ export const changeView = (route) => {
     const father = document.getElementById("father");
     father.innerHTML = '';
  switch (route) {
-     case 'home':
-       father.innerHTML = '';  
-     father.appendChild(loginUser());
+     case '#/home':  father.appendChild(components.home())
      break;
-     case 'registrate': father.appendChild(registerUSer())
+     case '#/registrate': father.appendChild(components.home2())
      break;
-     case 'profile': {
-       father.innerHTML = '';
-       const mostrarPerfil = (user) => {
-         getName(user)
-         .then((name) => {
-           getPost((posts) => {
-             father.innerHTML = '';
-             father.appendChild(profileUser({
-               ...user,
-               name,
-             }, posts))
-           })
-         });
-       }
-       const u = usuarioActivo();
-       if(u) {
-         mostrarPerfil(u)
-       } else {
-         observador(mostrarPerfil)
-         if(u) {
-           mostrarPerfil(u)
-         } 
-        }
+     case '#/perfil':
+      // if { user.id === id.usuarioActivo}      
+       getPost((data) => {
+         father.innerHTML = '';
+         father.appendChild(components.header(data))
+         father.appendChild(components.body(data))
+       })
+      
+     break;
+     default:
          break;
-       } 
-       default:
-      //father.appendChild(Login());
-       break;
-}
+ }   
 }
 
 export const init = () => {

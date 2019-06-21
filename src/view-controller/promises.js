@@ -1,13 +1,14 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataPost, usuarioActivo, db, dataBase} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, updateUser} from "../controller/firebase.js";
 
 // Promesa logueo:  
 export const logear = () => {
   const email = document.getElementById('emailLogin').value;
   const password = document.getElementById('contraseñaLogin').value;
   LogUsers(email, password)
-    .then(() => changeRoute('#/perfil'))
-    .catch(() => {
-      alert("Usuario invalido");
+    .then(() => console.log("Entrando"))
+    .catch(function (error) {
+      alert("Usuario o invalido");
+
     });
 }
 
@@ -15,16 +16,11 @@ export const logear = () => {
 export const register = () => {
   const email = document.getElementById('emailRegister').value;
   const password = document.getElementById('passwordRegister').value;
-  //const lastName = document.getElementById('lastName').value;
+  const lastName = document.getElementById('lastName').value;
   const name = document.getElementById('name').value;
   NewUsers(email, password)
-    .then((cred) => {
-      return db().collection('users').doc(cred.user.uid).set({
-        nameToSave
-      })
-    })
-    .then (() => signOut())
-    .then(() => changeRoute("#/home"))
+    .then(() => dataBase(name, lastName, email))
+     alert ('registrado')
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -47,28 +43,37 @@ export const out = () => {
 
 export const google = () => {
   LogGoogle()
-  .then(dataBase)
-  .then(() => {
-    changeRoute("#/profile");
-  })
+    .then((result) => {
+      var token = result.credential.accessToken;
+      console.log(token);
+      var user = result.user;
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    })
 };
 
 export const facebook = () => {
   LogFacebook()
-  .then(dataBase)
-  .then(() => {
-    changeRoute('#/profile');
-  })
+    .then(function (result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+    })
+    .catch(function (error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    })
 };
 
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
 const estados = document.getElementById('estado').value;
-const user = usuarioActivo();
-getName(user)
-.then((name) => {
-  dataPost(user.uid, name, tareaInput,estados, new Date());
-})
+dataPost(tareaInput,estados)
 .then((data) => {
   data.message = 'Nota agregada'
 }).catch((data) => {
@@ -76,23 +81,39 @@ getName(user)
 })
 }
 
-export const getName = (user) => {
-  if (user) {
-    if(user.providerData[0].providerId != 'password'){
-      return {
-        then:(cb) => {
-          cb(user.displayName)
-        }
-      }
-    } else {
-      return db().collection('users').doc(user.uid).get()
-      .then((doc) => {
-        return doc.data().name;
-      })
-    }
-  }
-};
+// export const agregarEstado = () =>{
+//   const estado = document.getElementById('estado').value;
+//   dataPost(estado)
+//   .then((data) => {
+//     data.message = 'Nota agregada'
+//   }).catch((data) => {
+//     data.message = 'Lo sentimos, no se agregar la nota';
+//   })
+//   }
 
-export const changeRoute = (route) => {
-  location.hash = route;
-};
+export const eliminarNota = (post) => {
+  deletePost(post.id)
+}
+
+// Editar post:
+export const nuevaNota = (post, nota) =>{
+  editarPost(post, nota)
+  .then((data) => {
+    data.message = 'Nota agregada'
+  })
+  .catch((data) => {
+    data.message = 'Lo sentimos, no se agregar la nota';
+  })
+  }
+
+/* Privacidad: */
+// export const privacidadPost = (post, nuevoEstado) => {
+//   estadoPost(post, nuevoEstado)
+//   if(currentUser().uid === post.idUser){
+//   privaciPost(post.id, nuevoEstado)
+//   }
+// }
+
+export const updateUserPerfil = (user,name) =>{      
+  updateUser(user.idUser,name);    
+}

@@ -1,11 +1,11 @@
 // Registrar usuarios:
 export const NewUsers = (email, password) => {
-    return firebase.auth().createUserWithEmailAndPassword(email, password)
+   return firebase.auth().createUserWithEmailAndPassword(email, password)
 };
 
 // iniciar Sesión:
 export const LogUsers = (email, password)=> {
-    return firebase.auth().signInWithEmailAndPassword(email, password);
+   return firebase.auth().signInWithEmailAndPassword(email, password);
 }
 
 // Cerrar sesión: 
@@ -13,70 +13,87 @@ export const signOut = () => firebase.auth().signOut()
 
 //Login con google
 export const LogGoogle = () => {
-   const provider = new firebase.auth.GoogleAuthProvider();
-   return firebase.auth().signInWithPopup(provider)
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return firebase.auth().signInWithPopup(provider)
 }
 
 //Login con facebook
 export const LogFacebook = () => {
-   const provider = new firebase.auth.FacebookAuthProvider();
-   return firebase.auth().signInWithPopup(provider)
+  const provider = new firebase.auth.FacebookAuthProvider();
+  return firebase.auth().signInWithPopup(provider)
 }
 
 //Agregar post:
-export const dataPost = (uid, name, textPost, modoPost, date) => {
-   return firebase.firestore().collection("notas").add ({
-      uid: uid,
-      name: name,
-   nota: textPost,
-   state: modoPost,
-   date: date,
+export const dataPost = (content, estado) => {
+  return firebase.firestore().collection("notas").add ({
+  nota: content,
+  estado: estado
 })
 }
-   
+  
 //Leer documentos   
-export const getPost = (callback) => {
-   firebase.firestore().collection("notas").orderBy('date', 'desc')
-   .onSnapshot((querySnapshot) => {
-      const data = [];
-      querySnapshot.forEach((doc) => {
-        doc.privacidad === 'publico '
-         data.push({ id: doc.id, ...doc.data() })
-      });
-      callback(data);
-   });
+ export const getPost = (callback) => {
+  firebase.firestore().collection("notas")
+  .onSnapshot((querySnapshot) => {
+     const data = [];
+     querySnapshot.forEach((doc) => {
+       doc.privacidad === 'publico '
+        data.push({ id: doc.id, ...doc.data() })
+     });
+     callback(data);
+  });
 } 
 
 //Eliminar notas:
- export const deletePost = (idPost) => {
-    return firebase.firestore().collection("notas").doc(idPost).delete()
+export const deletePost = (idPost) => {
+   return firebase.firestore().collection("notas").doc(idPost).delete()
 }
 
-  /* editar notas: */
-   export const editarPost = (idPost, postText, modePost) => {
-   return firebase.firestore().collection("notas").doc(idPost).update({
-   nota: postText,
-   state: modePost,
-   })
-   }
-   
-   //Agregar usuarios:
-   export const dataBase = (cred) => {
-   return firebase.firestore().collection("users").doc(cred.user.uid).set({
-   name: cred.user.displayName,
-   });
-   }
-   
-//Usuario activo:
-export const usuarioActivo = () => {
-   return firebase.auth().currentUser;
-}
-   
-//observador:
-export const observador = (userA) => {
-   return firebase.auth().onAuthStateChanged(userA);
-}
-
-export const db = () => {
-   return firebase.firestore();
-}
+ /* editar notas: */
+  export const editarPost = (idPost, nuevo, estado) => {
+  return firebase.firestore().collection("notas").doc(idPost).update({
+  nota: nuevo,
+  estado: estado
+  })
+  }
+  
+  //Agregar usuarios:
+  export const dataBase = (uid, Nombre, lastName, emailRegister) => {
+  return firebase.firestore().collection("users").doc(uid).set({
+  idUser: uid,
+  name: userName,
+  Nombre : Nombre,
+  Apellido : lastName,
+  Email : emailRegister,
+  photo: userPhoto,
+  });
+  }
+  
+  export const updateUser = (idUser, name) => {
+     return firebase.firestore().collection('users').doc(idUser).update({
+        name: name,
+     })
+  }
+  // imprimir usuario:
+  export const getUserFirestore = (uid) => {
+  return firebase.firestore().collection("users").doc(uid).get();
+  }
+  
+  //Leer documento usuario:
+  export const getUser = (uid, callback) => {
+  firebase.firestore().collection("users").doc(uid)
+  .onSnapshot(doc => {
+  const data = doc.data();
+  callback(data)
+  });
+  }
+  
+  //Usuario activo:
+  export const usuarioActivo = () => {
+  return firebase.auth().currentUser;
+  }
+  
+  //observador:
+  export const observador = () => {
+  return firebase.auth().onAuthStateChanged();
+  }
