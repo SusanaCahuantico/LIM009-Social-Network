@@ -45,10 +45,7 @@ export const google = () => {
   LogGoogle()
     .then((result) => {
       changeView('#/perfil')
-    
-   
       var token = result.accessToken;
-      
       var user = result.user;
     })
     .catch((error) => {     
@@ -63,14 +60,14 @@ export const google = () => {
 export const facebook = () => {
   LogFacebook()
     .then(function (result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
+       let token = result.credential.accessToken;
+      let user = result.user;
     })
     .catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      let email = error.email;
+      let credential = error.credential;
     })
 };
 

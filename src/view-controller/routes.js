@@ -20,7 +20,6 @@ export const changeView = (route) => {
      case '#/registrate': father.appendChild(components.home2())
      break;
      case '#/perfil':
-      // if { user.id === id.usuarioActivo}      
        getPost((data) => {
          father.innerHTML = '';
          father.appendChild(components.header(data))
