@@ -91,10 +91,10 @@ export const deletePost = (idPost) => {
   export const usuarioActivo = () => {
   return firebase.auth().currentUser;
   }
-  /*
+  
   //observador:
   export const observador = () => {
   return firebase.auth().onAuthStateChanged();
   }
 
-  */
+ 

@@ -1,16 +1,18 @@
 import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, updateUser} from "../controller/firebase.js";
-import{  changeTmp, changeView} from './routes.js'
+import{ changeView} from './routes.js'
 
 // Promesa logueo:  
 export const logear = () => {
   const email = document.getElementById('emailLogin').value;
   const password = document.getElementById('contraseñaLogin').value;
   LogUsers(email, password)
-    .then(() => console.log("Entrando"))
-    .catch(function (error) {
-      alert("Usuario o invalido");
-
-    });
+    .then(() => {
+    changeView('#/perfil')
+    })
+    .catch( (error=>  {
+     alert("Usuario o invalido");
+     changeView('');
+    }));
 }
 
 // Registrar usuario:
@@ -22,7 +24,7 @@ export const register = () => {
   NewUsers(email, password)
     .then(() => dataBase(name, lastName, email))
      alert ('registrado')
-    .catch(function (error) {
+    .catch( (error)=> {
       var errorCode = error.code;
       var errorMessage = error.message;
     });
