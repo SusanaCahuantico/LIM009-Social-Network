@@ -47,12 +47,12 @@ export default (posts) => {
   });
 
   const divPainter = CreateChildNode.querySelector('#painter')
-  divPainter.innerHTML = `
+  divPainter.innerHTML = 
+  `
   <img src="${usuarioActivo().photoURL}"/>
   <p>${usuarioActivo().displayName } </p>
   `;
-
-
+// console.log(usuarioActivo()); 115044517459372437444
   return CreateChildNode
 }
 
@@ -64,9 +64,14 @@ const pintarPost = (post) => {
        <button class="boton" id="btn-eliminar-${post.id}"> Eliminar </button>
        <button class="boton" id='btn-editar'> Editar </button>
        <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
-      `
+      `;
+
+     // console.log(post);
+
   divWrap.querySelector(`#btn-eliminar-${post.id}`)
-    .addEventListener('click', () => eliminarNota(post));
+    .addEventListener('click', () => {
+      eliminarNota(post)
+    });
 
   divWrap.querySelector('#btn-editar')
     .addEventListener('click', () => {

@@ -9,10 +9,12 @@ export const logear = () => {
     .then(() => {
     changeView('#/perfil')
     })
-    .catch( (error=>  {
-     alert("Usuario o invalido");
+    .catch( (error)=>  {
+     alert("Ingresa tu email y constraseña");
      changeView('');
-    }));
+     var errorCode = error.code;
+     var errorMessage = error.message;
+    });
 }
 
 // Registrar usuario:
@@ -84,16 +86,6 @@ dataPost(tareaInput,estados)
 })
 }
 
-// export const agregarEstado = () =>{
-//   const estado = document.getElementById('estado').value;
-//   dataPost(estado)
-//   .then((data) => {
-//     data.message = 'Nota agregada'
-//   }).catch((data) => {
-//     data.message = 'Lo sentimos, no se agregar la nota';
-//   })
-//   }
-
 export const eliminarNota = (post) => {
   deletePost(post.id)
 }
@@ -108,14 +100,6 @@ export const nuevaNota = (post, nota) =>{
     data.message = 'Lo sentimos, no se agregar la nota';
   })
   }
-
-/* Privacidad: */
-// export const privacidadPost = (post, nuevoEstado) => {
-//   estadoPost(post, nuevoEstado)
-//   if(currentUser().uid === post.idUser){
-//   privaciPost(post.id, nuevoEstado)
-//   }
-// }
 
 export const updateUserPerfil = (user,name) =>{      
   updateUser(user.idUser,name);    
@@ -136,7 +120,7 @@ export const promiseObs = () => {
       // ...
     } else {
       // User is signed out.
-      console.log('usuario no activo')
+      console.log('no existe usuario acgtivo')
       // ...
     }
   });

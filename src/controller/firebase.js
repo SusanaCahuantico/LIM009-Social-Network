@@ -50,13 +50,17 @@ export const deletePost = (idPost) => {
 }
 
  /* editar notas: */
-  export const editarPost = (idPost, nuevo, estado) => {
+  export const editarPost = (idPost, nuevo) => {
   return firebase.firestore().collection("notas").doc(idPost).update({
   nota: nuevo,
-  estado: estado
   })
   }
   
+  export const estadoPost = (idPost, estado) => {
+     return firebase.firestore().collection("notas").doc(idPost).update({
+        estado: estado,
+     })
+  }
   //Agregar usuarios:
   export const dataBase = (uid, Nombre, lastName, emailRegister) => {
   return firebase.firestore().collection("users").doc(uid).set({
@@ -96,5 +100,3 @@ export const deletePost = (idPost) => {
   export const observador = () => {
   return firebase.auth().onAuthStateChanged();
   }
-
- 
