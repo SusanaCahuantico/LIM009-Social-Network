@@ -49,7 +49,7 @@ export default (posts) => {
   const divPainter = CreateChildNode.querySelector('#painter')
   divPainter.innerHTML = 
   `
-  <img src="${usuarioActivo().photoURL}"/>
+  <img src="${usuarioActivo().photoURL}" class="image-user"/>
   <p>${usuarioActivo().displayName } </p>
   `;
 // console.log(usuarioActivo()); 115044517459372437444
