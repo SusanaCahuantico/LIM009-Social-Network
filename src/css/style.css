@@ -125,5 +125,24 @@ header .contenedor {
 }
 
 .box {
-    padding: 0  15px 0 15px;
+    padding: 85px;
+}
+
+
+.image-user {
+    height: 100px;
+    width: 100px;
+    /* los siguientes valores son independientes del tamaño del círculo */
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
+}
+
+.painter-user {
+    padding: 85px;
+}
+
+.wraper {
+    padding: 20px;
 }
