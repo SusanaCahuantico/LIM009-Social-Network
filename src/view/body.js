@@ -12,13 +12,13 @@ export default (posts) => {
   const Content =
       `
  <body>
- <div class = "col-lg-12">
- <div class="col-lg-6 caja">
- <div class="col-lg-12">
+ <div class = "col-lg-12 col-xs-12">
+ <div class="col-lg-6 col-xs-12 caja">
+ <div class="col-lg-12 col-xs-12">
   <img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvZoXe7uwejc3J5qK01AS_Oy19gBBbCDQsQ030PY0JEvywRIkq"></div>
-   <div class="col-lg-6" id="painterPhoto"></div>
-   <div class="col-lg-6" id="painter" class="painter-user"></div>
-   <div class="col-lg-6 caja"> 
+   <div class="col-lg-6 col-xs-6" id="painterPhoto"></div>
+   <div class="col-lg-6 col-xs-6" id="painter" class="painter-user"></div>
+   <div class="col-lg-6 col-xs-12 caja"> 
    <select id="estado">
    <option value="privado">Privado</option>
    <option value="publico">Público</option>
@@ -60,7 +60,7 @@ const pintarPost = (post) => {
   divWrap.innerHTML +=
       `
      <textarea readonly id="area">${post.nota}</textarea>   
-     <button class="boton" id="btn-eliminar-${post.id}"> Eliminar </button>
+     <button class="boton" id="btn-eliminar-${post.id}"></button>
      <button class="boton" id='btn-editar'> Editar </button>
      <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
     `;
