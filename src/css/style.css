@@ -21,7 +21,7 @@
     .col-lg-12{width: 100%;}
     .col-lg-9{width: 75%;}
     .col-lg-4{width: 33.33333333%;}
-    .col-lg-3{width: 25%;}
+    .boxBig{display: flex;}
 }
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(menu.css);
@@ -41,8 +41,6 @@ header {
     height: 50px;
     background: #333;
     color: #fff;
-
-    /* Si yo quiero que el menu se quede pegado */
     position: fixed;
     top: 0;
     left: 0;
@@ -86,8 +84,6 @@ header .contenedor {
     text-align: center;
     border-radius: 8px;
     margin: 2%;
-    text-decoration: none;
-    display: inline-block;
 }
 
 .botonInicio {
@@ -121,6 +117,7 @@ header .contenedor {
     width: 60px;
 	height: auto;
     border: none;
+    padding: px;
 }
 
 .box {
@@ -147,4 +144,31 @@ header .contenedor {
 
 .caja {
     padding: 50px;
+}
+
+.df {
+    display: flex;
+}
+.spaceIcon {
+    padding: 27%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.flexText {
+    flex-direction: column;
+    padding-left: 28%;
+}
+.paddImg{
+    
+    padding-left: 10%;
+}
+
+.portada {
+    width: 400px; 
+    height: 200px;
+}
+
+.bordes {
+    border-style: solid green;
+    border: 20px;
 }
