@@ -72,13 +72,11 @@ const pintarPost = (post) => {
   const divWrap = document.createElement('div');
   divWrap.innerHTML +=
       `
-     <textarea readonly id="area">${post.nota}</textarea>`  
-     if (usuarioActivo().uid === post.idUser){
-       `
-       <button class="boton" id="btn-eliminar-${post.id}"></button>
-       <button class="boton" id='btn-editar'> Editar </button>
-       <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
-      `;}  
+     <textarea readonly id="area">${post.nota}</textarea>   
+     <button class="boton" id="btn-eliminar-${post.id}"></button>
+     <button class="boton" id='btn-editar'> Editar </button>
+     <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
+    `;
 
   divWrap.querySelector(`#btn-eliminar-${post.id}`)
       .addEventListener('click', () => {
@@ -98,3 +96,13 @@ const pintarPost = (post) => {
 
   return divWrap;
 }
+/* divWrap.innerHTML +=
+`
+<textarea readonly id="area">${post.nota}</textarea>`  
+if (usuarioActivo().uid === post.idUser){
+  `
+  <button class="boton" id="btn-eliminar-${post.id}"></button>
+  <button class="boton" id='btn-editar'> Editar </button>
+  <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
+ `;}  
+ */
