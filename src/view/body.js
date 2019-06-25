@@ -24,15 +24,12 @@ export default (posts) => {
        <option value="privado">Privado</option>
        <option value="publico">Público</option>
        </select>
-       <div class="box"
        <form class="formulario" action="">
        <textarea class= "share-post line-black" type="text" id="tareaInput" placeholder="¿que estas pensando?"></textarea>
        <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
        </form>
-       </div>
-      <div id="wrap" class="wraper"></div>
-    </div>
-  </body>
+     <div id="wrap" class="wraper"></div> 
+  </body>b
  `;
 
   CreateChildNode.innerHTML = Content;

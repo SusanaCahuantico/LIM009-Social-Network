@@ -7,30 +7,8 @@
     height: auto;
 }
 
-[class*="col-"]{
-    float: left;
-}
-
-@media(max-width:767px){
-    .col-xs-12{width: 100%;}
-    .col-xs-6{width: 50%;}
-    .col-xs-4{width: 33.33333333%;}
-}
-
-@media(min-width:1200px){
-    .col-lg-12{width: 100%;}
-    .col-lg-9{width: 75%;}
-    .col-lg-4{width: 33.33333333%;}
-    .boxBig{display: flex;}
-}
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(menu.css);
-
-* {
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -121,11 +99,6 @@ header .contenedor {
     padding: px;
 }
 
-.box {
-    padding: 10px;
-}
-
-
 .image-user {
     height: 100px;
     width: 100px;
@@ -151,39 +124,13 @@ header .contenedor {
     flex-grow: 2;
 }
 
-.df {
-    display: flex;
-    flex-direction: column;
-}
-.spaceIcon {
-    padding: 27%;
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
-.flexText {
-    flex-direction: column;
-    padding-left: 28%;
-}
-.paddImg{
-    
-    padding-left: 10%;
-}
-
 .portada {
     width: 400px; 
     height: 200px;
 }
 
-.portada {
-    border: 5px solid black;
-    border: 20px;
-}
-
 .share-post{
-    /*outline: none; */
     border: 2% solid #1a3f13;
-    /*resize: none; */
-    /*text-align: justify;*/ 
     text-align-last: center;
     width: 90%;
     margin: 4%;
@@ -198,6 +145,32 @@ header .contenedor {
 
 div {
     border: 2px solid black;
+}
+
+.general {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    justify-content: center; 
+    align-content: center;
+}
+
+.intro {
+    flex-direction: column;
+    justify-content: center; 
+    align-content: center;
+}
+
+#father {
+    background-image: url("https://previews.123rf.com/images/apostrophe/apostrophe1407/apostrophe140700014/30014770-s%C3%B3lido-textura-de-fondo-verde-en-colores-pastel-luz-de-color-verde-y-se-desvaneci%C3%B3-dise%C3%B1o-antiguo-textura-ape.jpg");
+  }
+
+/*
+  div {
+    border: 2px solid black;
+
     justify-content: space-between;
 }
 
@@ -216,3 +189,5 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+*/
