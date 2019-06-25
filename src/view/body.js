@@ -12,14 +12,12 @@ export default (posts) => {
   const Content =
       `
  <body>
- <div class = " df col-lg-12 col-xs-12">
- <div class="col-lg-6 col-xs-12 caja boxBig">
- <div class class="col-lg-12 bordes">
+ <div class = "col-lg-12 col-xs-12">
+ <div class="col-lg-6 col-xs-12 caja">
  <div class="col-lg-12 col-xs-12">
-  <img class ="portada" src ="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></div>
+  <img src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvZoXe7uwejc3J5qK01AS_Oy19gBBbCDQsQ030PY0JEvywRIkq"></div>
    <div class="col-lg-6 col-xs-6" id="painterPhoto"></div>
    <div class="col-lg-6 col-xs-6" id="painter" class="painter-user"></div>
-   </div>
    <div class="col-lg-6 col-xs-12 caja"> 
    <select id="estado">
    <option value="privado">Privado</option>
@@ -74,12 +72,10 @@ const pintarPost = (post) => {
   const divWrap = document.createElement('div');
   divWrap.innerHTML +=
       `
-      <textarea readonly id="area">${post.nota}</textarea>   
-      <div class="col-lg-12 col-xs-12">
-      <button class="boton col-lg-4 col-xs-4" id='btn-eliminar-${post.id}'>Eliminar</button>
-      <button class="boton col-lg-4 col-xs-4" id='btn-editar'>Editar</button>
-      <button class="boton col-lg-4 col-xs-4" id='btn-guardar-${post.id}'>Guardar</button>
-      </div>
+     <textarea readonly id="area">${post.nota}</textarea>   
+     <button class="boton" id="btn-eliminar-${post.id}"></button>
+     <button class="boton" id='btn-editar'> Editar </button>
+     <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
     `;
 
   divWrap.querySelector(`#btn-eliminar-${post.id}`)
