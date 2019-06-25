@@ -170,6 +170,24 @@ header .contenedor {
 }
 
 .bordes {
-    border-style: solid green;
+    border: 5px solid black;
     border: 20px;
+}
+
+.share-post{
+    outline: none;
+    border: 2% solid #1a3f13;
+    resize: none;
+    text-align: justify; 
+    text-align-last: center;
+    width: 90%;
+    margin: 4%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.line-black {
+    border: 1px solid black;  
+    border-radius: 5px;
+    
 }

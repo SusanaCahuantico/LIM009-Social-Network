@@ -78,8 +78,8 @@ export const facebook = () => {
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
 const estados = document.getElementById('estado').value;
-const guardarID = usuarioActivo().uid; 
-dataPost(tareaInput,estados, guardarID)
+// const guardarID = usuarioActivo().uid; 
+dataPost(tareaInput,estados)
 .then((data) => {
   data.message = 'Nota agregada'
 }).catch((data) => {
