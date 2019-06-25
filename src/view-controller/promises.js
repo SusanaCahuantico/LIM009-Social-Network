@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, updateUser} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, updateUser, usuarioActivo} from "../controller/firebase.js";
 import{ changeView} from './routes.js'
 
 // Promesa logueo:  
@@ -11,7 +11,7 @@ export const logear = () => {
     })
     .catch( (error)=>  {
      alert("Ingresa tu email y constraseña");
-     changeView('');
+    // changeView('');
      var errorCode = error.code;
      var errorMessage = error.message;
     });
@@ -78,7 +78,8 @@ export const facebook = () => {
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
 const estados = document.getElementById('estado').value;
-dataPost(tareaInput,estados)
+const guardarID = usuarioActivo().uid; 
+dataPost(tareaInput,estados, guardarID)
 .then((data) => {
   data.message = 'Nota agregada'
 }).catch((data) => {
