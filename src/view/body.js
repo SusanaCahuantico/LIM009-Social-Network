@@ -47,7 +47,6 @@ export default (posts) => {
   const divWrap = CreateChildNode.querySelector('#wrap')
   posts.forEach(post => {
       divWrap.appendChild(pintarPost(post));
-
     });
 
   const divPainter = CreateChildNode.querySelector('#painter')
@@ -58,8 +57,7 @@ export default (posts) => {
         `;
   } else {
     divPainter.innerHTML =
-    `
-    <p> ${usuarioActivo().email} </p>`;
+    ` <p> ${usuarioActivo().email} </p>`;
   }
   
   const divPainterPhoto = CreateChildNode.querySelector('#painterPhoto')
@@ -78,39 +76,30 @@ export default (posts) => {
 
 const pintarPost = (post) => {
   const divWrap = document.createElement('div');
-  divWrap.innerHTML +=
-      `
-     <textarea readonly id="area">${post.nota}</textarea>   
-     <a class="boton" id="btn-eliminar-${post.id}"><img src="../images/basura.png" alt="tacho de basura"/> </a>
-     <a class="boton" id='btn-editar'> <img src="../images/editar.png" alt="Editar"/> </a>
-     <a class="boton" id='btn-guardar-${post.id}'> <img src="../images/descargar.png" alt="guardar"/> </a>
-    `;
+  divWrap.innerHTML += `<textarea readonly id="area">${post.nota}</textarea>`
+  if (usuarioActivo().uid === post.idUser)  {
+    divWrap.innerHTML += `
+      <a class="boton" id="btn-eliminar-${post.id}"><img src="../images/basura.png" alt="tacho de basura"/> </a>
+      <a class="boton" id='btn-editar'> <img src="../images/editar.png" alt="Editar"/> </a>
+      <a class="boton" id='btn-guardar-${post.id}'> <img src="../images/descargar.png" alt="guardar"/> </a>
+      `;
 
-  divWrap.querySelector(`#btn-eliminar-${post.id}`)
+    divWrap.querySelector(`#btn-eliminar-${post.id}`)
       .addEventListener('click', () => {
           eliminarNota(post)
       });
 
-  divWrap.querySelector('#btn-editar')
+    divWrap.querySelector('#btn-editar')
       .addEventListener('click', () => {
           document.getElementById('area').readOnly = false;
       });
 
-  divWrap.querySelector(`#btn-guardar-${post.id}`)
+    divWrap.querySelector(`#btn-guardar-${post.id}`)
       .addEventListener('click', () => {
           const nuevo = document.getElementById('area').value;
           nuevaNota(post.id, nuevo)
       });
+  }
 
   return divWrap;
 }
-/* divWrap.innerHTML +=
-`
-<textarea readonly id="area">${post.nota}</textarea>`  
-if (usuarioActivo().uid === post.idUser){
-  `
-  <button class="boton" id="btn-eliminar-${post.id}"></button>
-  <button class="boton" id='btn-editar'> Editar </button>
-  <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
- `;}  
- */

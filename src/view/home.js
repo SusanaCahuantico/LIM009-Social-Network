@@ -13,8 +13,8 @@ export default ()=>{
     <input class="input" id="contraseñaLogin" type="password" placeholder="Password"/> </br>
     <button class ="botonInicio" id="btnLogin">Log in</button>
     <h3>Tambien puedes ingresar con ...</h3>
-    <div class = "col-xs-12 col-lg-12 spaceIcon">
-     <img class = "col-xs-6 col-lg-6" id="btnGoogle" class ="iconos" src="../images/busqueda(1).png" alt=""/>
+    <div class="col-xs-12 col-lg-12 spaceIcon">
+     <img class="col-xs-6 col-lg-6" id="btnGoogle" class ="iconos" src="../images/busqueda(1).png" alt=""/>
     </div>
     <h3>No tienes un cuenta? <a href="#/registrate"> Registrate!</a> </h3> 
     </div>

@@ -24,11 +24,11 @@ export const LogFacebook = () => {
 }
 */
 //Agregar post:
-export const dataPost = (content, estado) => {
+export const dataPost = (content, estado, uid) => {
   return firebase.firestore().collection("notas").add ({
   nota: content,
   estado: estado,
-  //idUser: uid,
+  idUser: uid,
 })
 }
   

@@ -10,7 +10,7 @@ export default ()=>{
     <input class ="input" id="lastName" type="text" placeholder="Apellido"/> </br>
     <input class ="input" id="emailRegister" type="text" placeholder="Email"/> </br>
     <input class ="input" id="passwordRegister" type="password" placeholder="Password"/> </br>
-    <a href="#/perfil"><button class ="botonInicio" id="btnRegister">¡Registrate!</button></a> 
+    <a href="#/home"><button class ="botonInicio" id="btnRegister">¡Registrate!</button></a> 
     </div>
     </div>`
     ;
