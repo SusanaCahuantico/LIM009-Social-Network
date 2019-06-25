@@ -1,4 +1,4 @@
-import { logear, google, facebook } from "../view-controller/promises.js";
+import { logear, google } from "../view-controller/promises.js";
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
@@ -14,9 +14,8 @@ export default ()=>{
     <button class ="botonInicio" id="btnLogin">Log in</button>
     <h3>Tambien puedes ingresar con ...</h3>
     <div class = "col-xs-12 col-lg-12 spaceIcon">
-    <img class = "col-xs-6 col-lg-6" id="btnFacebook"class ="iconos"  src="../images/facebook.png" alt=""/>
-   <img class = "col-xs-6 col-lg-6" id="btnGoogle" class ="iconos" src="../images/google.png" alt=""/>
-   </div>
+     <img class = "col-xs-6 col-lg-6" id="btnGoogle" class ="iconos" src="../images/busqueda(1).png" alt=""/>
+    </div>
     <h3>No tienes un cuenta? <a href="#/registrate"> Registrate!</a> </h3> 
     </div>
     </div>
@@ -31,8 +30,8 @@ export default ()=>{
     const botonGoogle = CreateChildNode.querySelector('#btnGoogle')
     botonGoogle.addEventListener('click', google)
 
-    const botonFacebook = CreateChildNode.querySelector('#btnFacebook')
-    botonFacebook.addEventListener('click', facebook)
+    //const botonFacebook = CreateChildNode.querySelector('#btnFacebook')
+    //botonFacebook.addEventListener('click', facebook)
 
 return CreateChildNode
 }

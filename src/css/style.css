@@ -121,7 +121,7 @@ header .contenedor {
 }
 
 .box {
-    padding: 85px;
+    padding: 10px;
 }
 
 
@@ -169,16 +169,16 @@ header .contenedor {
     height: 200px;
 }
 
-.bordes {
+.portada {
     border: 5px solid black;
     border: 20px;
 }
 
 .share-post{
-    outline: none;
+    /*outline: none; */
     border: 2% solid #1a3f13;
-    resize: none;
-    text-align: justify; 
+    /*resize: none; */
+    /*text-align: justify;*/ 
     text-align-last: center;
     width: 90%;
     margin: 4%;
@@ -187,7 +187,6 @@ header .contenedor {
 }
 
 .line-black {
-    border: 1px solid black;  
+    border: 2px solid black;  
     border-radius: 5px;
-    
 }

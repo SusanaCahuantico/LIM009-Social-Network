@@ -81,9 +81,9 @@ const pintarPost = (post) => {
   divWrap.innerHTML +=
       `
      <textarea readonly id="area">${post.nota}</textarea>   
-     <button class="boton" id="btn-eliminar-${post.id}"></button>
-     <button class="boton" id='btn-editar'> Editar </button>
-     <button class="boton" id='btn-guardar-${post.id}'> Guardar </button>
+     <a class="boton" id="btn-eliminar-${post.id}"><img src="../images/basura.png" alt="tacho de basura"/> </a>
+     <a class="boton" id='btn-editar'> <img src="../images/editar.png" alt="Editar"/> </a>
+     <a class="boton" id='btn-guardar-${post.id}'> <img src="../images/descargar.png" alt="guardar"/> </a>
     `;
 
   divWrap.querySelector(`#btn-eliminar-${post.id}`)

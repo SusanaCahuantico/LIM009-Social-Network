@@ -17,18 +17,18 @@ export const LogGoogle = () => {
   return firebase.auth().signInWithPopup(provider)
 }
 
-//Login con facebook
+/*Login con facebook
 export const LogFacebook = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
   return firebase.auth().signInWithPopup(provider)
 }
-
+*/
 //Agregar post:
-export const dataPost = (content, estado, uid) => {
+export const dataPost = (content, estado) => {
   return firebase.firestore().collection("notas").add ({
   nota: content,
   estado: estado,
-  idUser: uid,
+  //idUser: uid,
 })
 }
   

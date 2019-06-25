@@ -1,4 +1,4 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost, updateUser, usuarioActivo} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, dataBase, dataPost, deletePost, editarPost, updateUser, usuarioActivo} from "../controller/firebase.js";
 import{ changeView} from './routes.js'
 
 // Promesa logueo:  
@@ -61,6 +61,7 @@ export const google = () => {
     })
 };
 
+/*
 export const facebook = () => {
   LogFacebook()
     .then(function (result) {
@@ -74,7 +75,7 @@ export const facebook = () => {
       let credential = error.credential;
     })
 };
-
+*/
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
 const estados = document.getElementById('estado').value;
