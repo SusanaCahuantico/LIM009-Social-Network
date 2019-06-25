@@ -34,6 +34,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    padding: 60px;
 }
 
 header {
@@ -144,11 +145,15 @@ header .contenedor {
 }
 
 .caja {
-    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 2;
 }
 
 .df {
     display: flex;
+    flex-direction: column;
 }
 .spaceIcon {
     padding: 27%;
@@ -189,4 +194,25 @@ header .contenedor {
 .line-black {
     border: 2px solid black;  
     border-radius: 5px;
+}
+
+div {
+    border: 2px solid black;
+    justify-content: space-between;
+}
+
+.perfil-usuario {
+    flex-direction: column;
+}
+
+body {
+    justify-content: space-around;
+}
+
+.perfil {
+    display: flex;
+}
+.i{
+    display: flex;
+    flex-direction: column;
 }
