@@ -1,5 +1,5 @@
 import { components } from '../view-controller/index.js'
-import { getPost, usuarioActivo} from '../controller/firebase.js';
+import { getPost} from '../controller/firebase.js';
 
 export const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
@@ -7,7 +7,7 @@ export const changeTmp = (hash) => {
     } else if (hash === '#/perfil' || hash === '#/home'||hash === '#/registrate' ) {
       return changeView(hash);
     } else {
-      return changeView(hash);
+      return changeView('#/perfil');
     }
 }
 
@@ -15,9 +15,7 @@ export const changeView = (route) => {
     const father = document.getElementById("father");
     father.innerHTML = '';
  switch (route) {
-     case '#/home':
-     father.innerHTML = '';  
-     father.appendChild(components.home())
+     case '#/home':  father.appendChild(components.home())
      break;
      case '#/registrate': father.appendChild(components.home2())
      break;
@@ -25,7 +23,7 @@ export const changeView = (route) => {
        getPost((data) => {
          father.innerHTML = '';
          father.appendChild(components.header(data))
-         father.appendChild(components.body(data, usuarioActivo))
+         father.appendChild(components.body(data))
        })
       
      break;

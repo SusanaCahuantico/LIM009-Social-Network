@@ -24,7 +24,7 @@ export const register = () => {
   const lastName = document.getElementById('lastName').value;
   const name = document.getElementById('name').value;
   NewUsers(email, password)
-    .then((cred) => dataBase(name, lastName, email, cred.user.uid))
+    .then(() => dataBase(name, lastName, email))
      alert ('registrado')
     .catch( (error)=> {
       var errorCode = error.code;
