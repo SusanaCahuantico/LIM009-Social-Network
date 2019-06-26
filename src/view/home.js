@@ -7,7 +7,7 @@ export default ()=>{
     <div class = "logo">
     <img src="../images/logo.png" alt=""/>
     </div>
-    <div class = "intro">
+    <div class = "intro general">
     <img src="../images/titulo.PNG" alt=""/>
     <h2> Bienvenida! </h2>
     <input class ="input" id="emailLogin" type="text" placeholder="Email"/> </br>
