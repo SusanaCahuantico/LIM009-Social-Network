@@ -1,17 +1,22 @@
-import { logear, google, facebook } from "../view-controller/promises.js";
+import { logear, google } from "../view-controller/promises.js";
 
 export default ()=>{
     const CreateChildNode = document.createElement("div");
-    const Content = `<div class = "col-xs-12 col-lg-6"><img src="../images/logo.png" alt=""/></div>
-    <div class="col-xs-12 col-lg-6"><img src="../images/titulo.PNG" alt=""/>
-    <h2>Bienvenida!</h2>
-    <input id="emailLogin" type="text" placeholder="Email"/> </br>
-    <input id="contraseñaLogin" type="password" placeholder="Password"/> </br>
-    <a href="#/perfil"><button id="btnLogin">Log in</button></a>
-    <h2>Tambien puedes ingresar con ...</h2>
-    <a id="btnFacebook"><img src="../images/facebook.png" alt=""/></a> 
-    <a id="btnGoogle"><img src="../images/google.png" alt=""/></a>
-    <h2>No tienes un cuenta? <a href="#/registrate"> REGISTRATE!</a> </h2> 
+    const Content = 
+    `<div class = "general">
+    <div class = "logo">
+    <img src="../images/logo.png" alt=""/>
+    </div>
+    <div class = "intro general">
+    <img src="../images/titulo.PNG" alt=""/>
+    <h2> Bienvenida! </h2>
+    <input class ="input" id="emailLogin" type="text" placeholder="Email"/> </br>
+    <input class="input" id="contraseñaLogin" type="password" placeholder="Password"/> </br>
+    <button class ="botonInicio" id="btnLogin">Log in</button>
+    <h3>Tambien puedes ingresar con ...</h3>
+     <img id="btnGoogle" class ="iconos" src="../images/busqueda(1).png" alt=""/>
+    <h3>No tienes un cuenta? <a href="#/registrate"> Registrate!</a> </h3>
+    </div>
     </div>`
     ;
     CreateChildNode.innerHTML = Content;
@@ -21,9 +26,6 @@ export default ()=>{
 
     const botonGoogle = CreateChildNode.querySelector('#btnGoogle')
     botonGoogle.addEventListener('click', google)
-
-    const botonFacebook = CreateChildNode.querySelector('#btnFacebook')
-    botonFacebook.addEventListener('click', facebook)
 
 return CreateChildNode
 }

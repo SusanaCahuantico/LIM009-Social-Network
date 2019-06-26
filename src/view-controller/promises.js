@@ -1,14 +1,19 @@
-import { NewUsers, LogUsers, signOut, LogGoogle, LogFacebook, dataBase, dataPost, deletePost, editarPost} from "../controller/firebase.js";
+import { NewUsers, LogUsers, signOut, LogGoogle, dataBase, dataPost, deletePost, editarPost, updateUser, usuarioActivo} from "../controller/firebase.js";
+import{ changeView} from './routes.js'
 
 // Promesa logueo:  
 export const logear = () => {
   const email = document.getElementById('emailLogin').value;
   const password = document.getElementById('contraseñaLogin').value;
   LogUsers(email, password)
-    .then(() => console.log("Entrando"))
-    .catch(function (error) {
-      alert("Usuario o contraseña invalida");
-
+    .then(() => {
+    changeView('#/perfil')
+    })
+    .catch( (error)=>  {
+     alert("Ingresa tu email y constraseña");
+    // changeView('');
+     var errorCode = error.code;
+     var errorMessage = error.message;
     });
 }
 
@@ -21,12 +26,9 @@ export const register = () => {
   NewUsers(email, password)
     .then((cred) => dataBase(name, lastName, email, cred.user.uid))
      alert ('registrado')
-    // .then(() => exit())
-    //.then(() => changeView)
-    .catch(function (error) {
+    .catch( (error)=> {
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log(errorMessage);
     });
 }
 
@@ -46,35 +48,39 @@ export const out = () => {
 export const google = () => {
   LogGoogle()
     .then((result) => {
-      var token = result.credential.accessToken;
-      console.log(token);
+      changeView('#/perfil')
+      var token = result.accessToken;
       var user = result.user;
     })
-    .catch((error) => {
+    .catch((error) => {     
       var errorCode = error.code;
       var errorMessage = error.message;
       var email = error.email;
       var credential = error.credential;
+      
     })
 };
 
+/*
 export const facebook = () => {
   LogFacebook()
     .then(function (result) {
-      var token = result.credential.accessToken;
-      var user = result.user;
+       let token = result.credential.accessToken;
+      let user = result.user;
     })
     .catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      var email = error.email;
-      var credential = error.credential;
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      let email = error.email;
+      let credential = error.credential;
     })
 };
-
+*/
 export const agregarNota = () =>{
 const tareaInput = document.getElementById('tareaInput').value;
-dataPost(tareaInput)
+const estados = document.getElementById('estado').value;
+const guardarID = usuarioActivo().uid; 
+dataPost(tareaInput,estados, guardarID)
 .then((data) => {
   data.message = 'Nota agregada'
 }).catch((data) => {
@@ -97,68 +103,27 @@ export const nuevaNota = (post, nota) =>{
   })
   }
 
-/* Privacidad: */
-export const privacidadPost = (post, nuevoEstado) => {
-  editarPost(post, nuevoEstado)
-  if(currentUser().uid === post.idUser){
-  privaciPost(post.id, nuevoEstado)
-  }
+export const updateUserPerfil = (user,name) =>{      
+  updateUser(user.idUser,name);    
 }
 
-//Agregar post:
-export const dataPost = (content,uid, name, modoPost) => {
-  return firebase.firestore().collection("notas").add ({
-  nota: content,
-  userId: uid,
-  name: name,
-  estado: modoPost,
-  })
-  }
-
-  //Leer documentos 
-export const getPost = (callback) => {
-  firebase.firestore().collection("notas")
-  .onSnapshot((querySnapshot) => {
-  const data = [];
-  querySnapshot.forEach((doc) => {
-  doc.privacidad === 'publico '
-  data.push({ id: doc.id, ...doc.data() })
+export const promiseObs = () => {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      console.log(email)
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      // ...
+    } else {
+      // User is signed out.
+      console.log('no existe usuario acgtivo')
+      // ...
+    }
   });
-  callback(data);
-  });
-  } 
-
-  //Agregar usuarios:
-export const dataBase = (Nombre, lastName, emailRegister, cred) => {
-  return firebase.firestore().collection("users").doc(cred.user.uid).set({
-  Nombre : Nombre,
-  Apellido : lastName,
-  Email : emailRegister,
-  name: cred.user.displayName,
-  });
-  }
-
-// imprimir usuario:
-export const getUserFirestore = (uid) => {
-  return firebase.firestore().collection("users").doc(uid).get();
-  }
-  
-  //Leer documento usuario:
-  export const getUser = (uid, callback) => {
-  firebase.firestore().collection("users").doc(uid)
-  .onSnapshot(doc => {
-  const data = doc.data();
-  callback(data)
-  });
-  }
-  
-  //Usuario activo:
-  export const usuarioActivo = () => {
-  return firebase.auth().currentUser;
-  }
-  
-  //observador:
-  export const observador = (obs) => {
-  return firebase.auth().onAuthStateChanged(obs);
-  }
-  
+}
