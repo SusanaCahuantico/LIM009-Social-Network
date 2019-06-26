@@ -12,14 +12,15 @@ export default (posts) => {
   const Content =
   `
   <body>
-   <div class="i">
+  <div class = "general">
+   <div class="i general">
            <img class ="portada" src ="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
-           <div class="perfil">
+           <div class="general">
             <p id="painterPhoto"></p>
             <p id="painter" class="painter-user"></p>
            </div>
     </div>
-    <div class="caja"> 
+    <div class="caja general"> 
        <select id="estado">
        <option value="privado">Privado</option>
        <option value="publico">Público</option>
@@ -29,6 +30,10 @@ export default (posts) => {
        <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
        </form>
      <div id="wrap" class="wraper"></div> 
+<<<<<<< HEAD
+=======
+     </div>  
+>>>>>>> 58228d3f734bed4aa55101992a966a7bf35a9393
   </body>
  `;
 
@@ -69,12 +74,14 @@ export default (posts) => {
 
 const pintarPost = (post) => {
   const divWrap = document.createElement('div');
-  divWrap.innerHTML += `<textarea readonly id="area">${post.nota}</textarea>`
+  divWrap.innerHTML += `<textarea class ="share-post" readonly id="area">${post.nota}</textarea>`
   if (usuarioActivo().uid === post.idUser)  {
     divWrap.innerHTML += `
+    <div class ="general">
       <a class="boton" id="btn-eliminar-${post.id}"><img src="../images/basura.png" alt="tacho de basura"/> </a>
       <a class="boton" id='btn-editar'> <img src="../images/editar.png" alt="Editar"/> </a>
       <a class="boton" id='btn-guardar-${post.id}'> <img src="../images/descargar.png" alt="guardar"/> </a>
+      </div>
       `;
 
     divWrap.querySelector(`#btn-eliminar-${post.id}`)
