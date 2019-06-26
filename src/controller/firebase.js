@@ -100,4 +100,4 @@ export const deletePost = (idPost) => {
   //observador:
   export const observador = () => {
   return firebase.auth().onAuthStateChanged();
-  }
+}
