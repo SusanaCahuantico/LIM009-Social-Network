@@ -130,11 +130,8 @@ header .contenedor {
 }
 
 .share-post{
-    border: 2% solid #1a3f13;
-    text-align-last: center;
     width: 90%;
-    margin: 4%;
-    border-radius: 5px;
+    margin: 10%;
     text-align: center;
 }
 
@@ -143,51 +140,34 @@ header .contenedor {
     border-radius: 5px;
 }
 
-div {
+/* div {
     border: 2px solid black;
-}
+} */
 
 .general {
     display: flex;
-    justify-content: space-around;
 }
 
 .logo {
-    justify-content: center; 
-    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .intro {
     flex-direction: column;
-    justify-content: center; 
-    align-content: center;
+    justify-content: center;
+    align-items: center; 
 }
+
+.i {
+    flex-direction: column;
+}
+
+.caja {
+    align-items: center;
+}
+
 
 #father {
     background-image: url("https://previews.123rf.com/images/apostrophe/apostrophe1407/apostrophe140700014/30014770-s%C3%B3lido-textura-de-fondo-verde-en-colores-pastel-luz-de-color-verde-y-se-desvaneci%C3%B3-dise%C3%B1o-antiguo-textura-ape.jpg");
   }
-
-/*
-  div {
-    border: 2px solid black;
-
-    justify-content: space-between;
-}
-
-.perfil-usuario {
-    flex-direction: column;
-}
-
-body {
-    justify-content: space-around;
-}
-
-.perfil {
-    display: flex;
-}
-.i{
-    display: flex;
-    flex-direction: column;
-}
-
-*/
