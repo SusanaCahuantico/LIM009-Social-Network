@@ -13,6 +13,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     padding: 60px;
+    flex-wrap: wrap;
 }
 
 header {
@@ -167,10 +168,8 @@ div {
     background-image: url("https://previews.123rf.com/images/apostrophe/apostrophe1407/apostrophe140700014/30014770-s%C3%B3lido-textura-de-fondo-verde-en-colores-pastel-luz-de-color-verde-y-se-desvaneci%C3%B3-dise%C3%B1o-antiguo-textura-ape.jpg");
   }
 
-/*
   div {
     border: 2px solid black;
-
     justify-content: space-between;
 }
 
@@ -189,5 +188,3 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-*/

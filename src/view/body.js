@@ -29,7 +29,7 @@ export default (posts) => {
        <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
        </form>
      <div id="wrap" class="wraper"></div> 
-  </body>b
+  </body>
  `;
 
   CreateChildNode.innerHTML = Content;
