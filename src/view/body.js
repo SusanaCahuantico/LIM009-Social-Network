@@ -1,11 +1,5 @@
-import {
-  agregarNota,
-  eliminarNota,
-  nuevaNota
-} from '../view-controller/promises.js';
-import {
-  usuarioActivo
-} from '../controller/firebase.js'
+import { agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
+import { usuarioActivo} from '../controller/firebase.js'
 
 export default (posts) => {
   const CreateChildNode = document.createElement("div");
@@ -15,7 +9,7 @@ export default (posts) => {
   <div class = "general">
    <div class="i general">
            <img class ="portada" src ="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
-           <div class="general">
+           <div class="general perfil">
             <p id="painterPhoto"></p>
             <p id="painter" class="painter-user"></p>
            </div>
@@ -45,7 +39,6 @@ export default (posts) => {
     });
 
   const divPainter = CreateChildNode.querySelector('#painter')
-  //console.log(usuarioActivo().uid);
   if(usuarioActivo().displayName){
     divPainter.innerHTML =
         `<p>${usuarioActivo().displayName} </p>
@@ -71,15 +64,27 @@ export default (posts) => {
 
 const pintarPost = (post) => {
   const divWrap = document.createElement('div');
-  divWrap.innerHTML += `<textarea class ="share-post" readonly id="area">${post.nota}</textarea>`
-  if (usuarioActivo().uid === post.idUser)  {
+  if (usuarioActivo().uid === post.idUser) {
+    divWrap.innerHTML +=`
+        <h5 class ="cabeza"> Publicado por: ${usuarioActivo().displayName} </h5>`
+  } else {
     divWrap.innerHTML += `
+    <h5 class="cabeza"> Publicado por: ${usuarioActivo().email} </h5>
+    `
+  }
+  divWrap.innerHTML += `
+  <textarea class ="post-nota" readonly id="area">${post.nota}</textarea>`
+  if (usuarioActivo().uid === post.idUser)  {
+    divWrap.innerHTML += 
+    `
+    <section class="crud">
     <div class ="general">
       <a class="boton" id="btn-eliminar-${post.id}"><img src="../images/basura.png" alt="tacho de basura"/> </a>
       <a class="boton" id='btn-editar'> <img src="../images/editar.png" alt="Editar"/> </a>
       <a class="boton" id='btn-guardar-${post.id}'> <img src="../images/descargar.png" alt="guardar"/> </a>
       </div>
-      `;
+    </section>
+    `;
 
     divWrap.querySelector(`#btn-eliminar-${post.id}`)
       .addEventListener('click', () => {

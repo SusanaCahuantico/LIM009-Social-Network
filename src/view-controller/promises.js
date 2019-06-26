@@ -23,7 +23,7 @@ export const register = () => {
   const password = document.getElementById('passwordRegister').value;
   const lastName = document.getElementById('lastName').value;
   const name = document.getElementById('name').value;
-  NewUsers(email, password)
+  NewUsers(email, password, lastName, name)
     .then(() => dataBase(name, lastName, email))
      alert ('registrado')
     .catch( (error)=> {
