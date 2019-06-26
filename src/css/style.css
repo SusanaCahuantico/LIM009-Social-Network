@@ -170,4 +170,9 @@ header .contenedor {
 
 #father {
     background-image: url("https://previews.123rf.com/images/apostrophe/apostrophe1407/apostrophe140700014/30014770-s%C3%B3lido-textura-de-fondo-verde-en-colores-pastel-luz-de-color-verde-y-se-desvaneci%C3%B3-dise%C3%B1o-antiguo-textura-ape.jpg");
+    height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   }
