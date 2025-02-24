@@ -3,11 +3,11 @@ import { logear, google } from "../view-controller/promises.js";
 export default () => {
     const CreateChildNode = document.createElement("div");
     const Content =
-        `<div class="row">
-    <div class="col-md-6 logo">
-    <img class="img-fluid" src="../images/logo.png" alt=""/>
+        `<div class="container">
+    <div class="logo">
+    <img src="../images/logo.png" alt=""/>
     </div>
-    <div class="col-md-6 intro general">
+    <div class="intro general">
     <img src="../images/titulo.PNG" alt=""/>
     <h2> Bienvenida! </h2>
     <input class="input" id="emailLogin" type="text" placeholder="Email"/> </br>

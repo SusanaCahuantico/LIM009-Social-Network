@@ -139,10 +139,13 @@ header .contenedor {
     border-radius: 5px;
 }
 
+/* div {
+    border: 2px solid black;
+} */
+
 .general {
     display: flex;
     padding: 30px;
-    background: lightblue;
 }
 
 .logo {

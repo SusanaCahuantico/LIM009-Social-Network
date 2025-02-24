@@ -4,7 +4,7 @@ export default ()=>{
         const CreateChildNode = document.createElement("div");
         const Content =`
         <header>
-        <div class="container">
+        <div class="contenedor">
             <img src="../images/pawprint.png" alt="huellas"/>
             <h1 class=""> Mis Patas </h1>
             <input type="checkbox" id="menu-bar" >

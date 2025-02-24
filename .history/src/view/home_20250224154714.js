@@ -1,13 +1,13 @@
 import { logear, google } from "../view-controller/promises.js";
 
-export default () => {
+export default ()=>{
     const CreateChildNode = document.createElement("div");
-    const Content =
-        `<div class="row">
-    <div class="col-md-6 logo">
-    <img class="img-fluid" src="../images/logo.png" alt=""/>
+    const Content = 
+    `<div class="container">
+    <div class="logo">
+    <img src="../images/logo.png" alt=""/>
     </div>
-    <div class="col-md-6 intro general">
+    <div class="intro general">
     <img src="../images/titulo.PNG" alt=""/>
     <h2> Bienvenida! </h2>
     <input class="input" id="emailLogin" type="text" placeholder="Email"/> </br>
@@ -18,7 +18,7 @@ export default () => {
     <h3>No tienes un cuenta? <a href="#/registrate"> Registrate!</a> </h3>
     </div>
     </div>`
-        ;
+    ;
     CreateChildNode.innerHTML = Content;
 
     const btnLogIn = CreateChildNode.querySelector('#btnLogin')
@@ -27,5 +27,5 @@ export default () => {
     const botonGoogle = CreateChildNode.querySelector('#btnGoogle')
     botonGoogle.addEventListener('click', google)
 
-    return CreateChildNode
+return CreateChildNode
 }

@@ -5,7 +5,7 @@ export default () => {
     const Content =
         `<div class="row">
     <div class="col-md-6 logo">
-    <img class="img-fluid" src="../images/logo.png" alt=""/>
+    <img src="../images/logo.png" alt=""/>
     </div>
     <div class="col-md-6 intro general">
     <img src="../images/titulo.PNG" alt=""/>
