@@ -20,7 +20,7 @@ export default (posts) => {
        <option value="publico">Público</option>
        </select>
        <form class="formulario" action="">
-       <textarea class= "share-post line-black" type="text" id="tareaInput" placeholder="¿que estas pensando?"></textarea>
+       <p class= "card-text" type="text" id="tareaInput" placeholder="¿que estas pensando?"></p>
        <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
        </form>
      <div id="wrap" class="wraper"></div> 
@@ -65,10 +65,10 @@ const pintarPost = (post) => {
   const divWrap = document.createElement('div');
   if (usuarioActivo().uid === post.idUser) {
     divWrap.innerHTML +=`
-        <h5 class =""> Publicado por: ${usuarioActivo().displayName} </h5>`
+        <div class ="card-footer text-muted"> Publicado por: ${usuarioActivo().displayName} </div>`
   } else {
     divWrap.innerHTML += `
-    <h5 class=""> Publicado por: ${usuarioActivo().email} </h5>
+    <div class ="card-footer text-muted"> Publicado por: ${usuarioActivo().email} </div>
     `
   }
   divWrap.innerHTML += `
