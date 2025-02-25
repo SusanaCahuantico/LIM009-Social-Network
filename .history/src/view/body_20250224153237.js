@@ -65,10 +65,10 @@ const pintarPost = (post) => {
   const divWrap = document.createElement('div');
   if (usuarioActivo().uid === post.idUser) {
     divWrap.innerHTML +=`
-        <h5 class =""> Publicado por: ${usuarioActivo().displayName} </h5>`
+        <h5 class ="cabeza"> Publicado por: ${usuarioActivo().displayName} </h5>`
   } else {
     divWrap.innerHTML += `
-    <h5 class=""> Publicado por: ${usuarioActivo().email} </h5>
+    <h5 class="cabeza"> Publicado por: ${usuarioActivo().email} </h5>
     `
   }
   divWrap.innerHTML += `

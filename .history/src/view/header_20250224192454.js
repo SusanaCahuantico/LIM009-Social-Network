@@ -1,16 +1,16 @@
-import {out} from '../view-controller/promises.js'
+import { out } from '../view-controller/promises.js'
 
-export default ()=>{
-        const CreateChildNode = document.createElement("div");
-        const Content =`
+export default () => {
+    const CreateChildNode = document.createElement("div");
+    const Content = `
         <header>
         <div class="container">
             <img src="../images/pawprint.png" alt="huellas"/>
             <h1 class=""> Mis Patas </h1>
             <input type="checkbox" id="menu-bar" >
-            <i class="fa-solid fa-bars"></i>
-            <label class="icon-menu" for="menu-bar">
-            <span class="navbar-toggler-icon"></span></label>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
             <nav class="menu">
                 <a href="#/perfil">Mi perfil </a>
                 <a href="" id="btnOut"> Cerrar Sesión </a>
@@ -22,7 +22,7 @@ export default ()=>{
     `;
 
     CreateChildNode.innerHTML = Content;
-    
+
     const cerrarSesion = CreateChildNode.querySelector('#btnOut')
     cerrarSesion.addEventListener('click', out)
 

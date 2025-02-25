@@ -8,9 +8,7 @@ export default ()=>{
             <img src="../images/pawprint.png" alt="huellas"/>
             <h1 class=""> Mis Patas </h1>
             <input type="checkbox" id="menu-bar" >
-            <i class="fa-solid fa-bars"></i>
-            <label class="icon-menu" for="menu-bar">
-            <span class="navbar-toggler-icon"></span></label>
+            <label class="icon-menu" for="menu-bar"><span class="navbar-toggler-icon"></span></label>
             <nav class="menu">
                 <a href="#/perfil">Mi perfil </a>
                 <a href="" id="btnOut"> Cerrar Sesión </a>

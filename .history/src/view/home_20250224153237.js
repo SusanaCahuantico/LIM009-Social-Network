@@ -13,7 +13,7 @@ export default ()=>{
     <input class ="input" id="emailLogin" type="text" placeholder="Email"/> </br>
     <input class="input" id="contraseñaLogin" type="password" placeholder="Password"/> </br>
     <button class ="botonInicio" id="btnLogin">Log in</button>
-    <h3>Tambien puedes ingresar con ...</h3>
+    <p>Tambien puedes ingresar con ...</p>
      <img id="btnGoogle" class ="iconos" src="../images/busqueda(1).png" alt=""/>
     <h3>No tienes un cuenta? <a href="#/registrate"> Registrate!</a> </h3>
     </div>

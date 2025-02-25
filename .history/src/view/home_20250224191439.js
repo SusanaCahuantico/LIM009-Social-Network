@@ -9,7 +9,7 @@ export default () => {
     </div>
     <div class="col-md-6 intro general">
     <img src="../images/titulo.PNG" alt=""/>
-    <h3 class="mx-2 p-2"> Bienvenida </h3>
+    <h3> Bienvenida </h3>
     <input class="form-control mx-auto p-2" id="emailLogin" style="width: 350px" type="text" placeholder="Email"/> </br>
     <input class="form-control mx-auto p-2" id="contraseñaLogin" style="width: 350px" type="password" placeholder="Password"/> </br>
     <button class="btn btn-primary" id="btnLogin">Ingresar</button> </br>
