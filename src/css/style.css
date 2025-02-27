@@ -10,22 +10,141 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(menu.css);
 
+/* Estilos generales */
 body {
-    font-family: 'Open Sans', sans-serif;
-    padding: 60px;
-    flex-wrap: wrap;
-}
-
-header {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 90px;
+  }
+  
+  .header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .portada {
     width: 100%;
-    height: 50px;
-    background: #333;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-}
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .perfil {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-user {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  
+  .painter-user {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formulario {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: #218838;
+  }
+  
+  .posts-container {
+    margin-top: 20px;
+  }
+  
+  .post-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .post-header {
+    margin-bottom: 10px;
+  }
+  
+  .post-author {
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .post-content {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    resize: none;
+  }
+  
+  .post-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+  }
+
 
 .contenedor {
     width: 98%;
@@ -183,12 +302,6 @@ header .contenedor {
     border-radius: 3px;
     text-align: center;
     padding: 50%;
-  }
-
-}
-
-  .general .perfil {
-      border: 2px solid black;
   }
 
   .crud {

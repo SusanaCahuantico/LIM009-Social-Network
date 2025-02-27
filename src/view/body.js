@@ -1,106 +1,132 @@
-import { agregarNota, eliminarNota, nuevaNota} from '../view-controller/promises.js';
-import { usuarioActivo} from '../controller/firebase.js'
+import { agregarNota, eliminarNota, nuevaNota } from '../view-controller/promises.js';
+import { usuarioActivo } from '../controller/firebase.js';
 
 export default (posts) => {
-  const CreateChildNode = document.createElement("div");
-  const Content =
-  `
-  <body>
-  <div class = "general">
-   <div class="i general">
-           <img class ="portada" src ="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
-           <div class="general perfil">
-            <p id="painterPhoto"></p>
-            <p id="painter" class="painter-user"></p>
-           </div>
+  const container = document.createElement("div");
+  container.classList.add("container");
+
+  container.innerHTML = `
+    <div class="header">
+      <img class="portada" src="https://images.pexels.com/photos/46024/pexels-photo-46024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Portada"/>
+      <div class="perfil">
+        <p id="painterPhoto"></p>
+        <p id="painter" class="painter-user"></p>
+      </div>
     </div>
-    <div class="caja general"> 
-       <select id="estado">
-       <option value="privado">Privado</option>
-       <option value="publico">Público</option>
-       </select>
-       <form class="formulario" action="">
-       <p class= "card-text" type="text" id="tareaInput" placeholder="¿que estas pensando?"></p>
-       <input type="button" id="btn-agregar" class="boton" value="Agregar Tarea">
-       </form>
-     <div id="wrap" class="wraper"></div> 
-  </body>
- `;
+    <div class="content">
+      <select id="estado" class="form-select">
+        <option value="privado">Privado</option>
+        <option value="publico">Público</option>
+      </select>
+      <form class="formulario">
+        <textarea class="form-control" id="tareaInput" placeholder="¿Qué estás pensando?" rows="3"></textarea>
+        <button type="button" id="btn-agregar" class="btn btn-primary">Agregar Tarea</button>
+      </form>
+      <div id="wrap" class="posts-container"></div>
+    </div>
+  `;
 
-  CreateChildNode.innerHTML = Content;
+  const botonAgregar = container.querySelector('#btn-agregar');
+  botonAgregar.addEventListener('click', agregarNota);
 
-  const botonAgregar = CreateChildNode.querySelector('#btn-agregar')
-  botonAgregar.addEventListener('click', agregarNota)
+  const divWrap = container.querySelector('#wrap');
+  posts.forEach(post => divWrap.appendChild(pintarPost(post)));
 
-  const divWrap = CreateChildNode.querySelector('#wrap')
-  posts.forEach(post => {
-      divWrap.appendChild(pintarPost(post));
-    });
+  const divPainter = container.querySelector('#painter');
+  const divPainterPhoto = container.querySelector('#painterPhoto');
+  const usuario = usuarioActivo();
 
-  const divPainter = CreateChildNode.querySelector('#painter')
-  if(usuarioActivo().displayName){
-    divPainter.innerHTML =
-        `<p>${usuarioActivo().displayName} </p>
-        `;
+  if (usuario.displayName) {
+    divPainter.innerHTML = `<p>${usuario.displayName}</p>`;
   } else {
-    divPainter.innerHTML =
-    ` <p> ${usuarioActivo().email} </p>`;
-  }
-  
-  const divPainterPhoto = CreateChildNode.querySelector('#painterPhoto')
-  if(usuarioActivo().photoURL){
-    divPainterPhoto.innerHTML =
-    `<img src="${usuarioActivo().photoURL}" class="image-user"/>`;
-  } else {
-    divPainterPhoto.innerHTML =
-    `
-    <img class="image-user" src="../images/imagen-usuario.jpg" alt="imagen usuario"/>`;
+    divPainter.innerHTML = `<p>${usuario.email}</p>`;
   }
 
+  if (usuario.photoURL) {
+    divPainterPhoto.innerHTML = `<img src="${usuario.photoURL}" class="image-user" alt="Foto de perfil"/>`;
+  } else {
+    divPainterPhoto.innerHTML = `<img class="image-user" src="../images/imagen-usuario.jpg" alt="imagen usuario"/>`;
+  }
 
-  return CreateChildNode
-}
+  return container;
+};
 
 const pintarPost = (post) => {
   const divWrap = document.createElement('div');
-  if (usuarioActivo().uid === post.idUser) {
-    divWrap.innerHTML +=`
-        <div class ="card-footer text-muted"> Publicado por: ${usuarioActivo().displayName} </div>`
-  } else {
-    divWrap.innerHTML += `
-    <div class ="card-footer text-muted"> Publicado por: ${usuarioActivo().email} </div>
-    `
-  }
-  divWrap.innerHTML += `
-  <textarea class ="post-nota" readonly id="area">${post.nota}</textarea>`
-  if (usuarioActivo().uid === post.idUser)  {
-    divWrap.innerHTML += 
-    `
-    <section class="crud">
-    <div class ="general">
-      <a class="boton" id="btn-eliminar-${post.id}"><img src="../images/basura.png" alt="tacho de basura"/> </a>
-      <a class="boton" id='btn-editar'> <img src="../images/editar.png" alt="Editar"/> </a>
-      <a class="boton" id='btn-guardar-${post.id}'> <img src="../images/descargar.png" alt="guardar"/> </a>
-      </div>
-    </section>
-    `;
+  divWrap.classList.add('post-card');
 
-    divWrap.querySelector(`#btn-eliminar-${post.id}`)
-      .addEventListener('click', () => {
-          eliminarNota(post)
-      });
+  const usuario = usuarioActivo();
 
-    divWrap.querySelector('#btn-editar')
-      .addEventListener('click', () => {
-          document.getElementById('area').readOnly = false;
-      });
+  divWrap.innerHTML = `
+    <div class="post-header">
+      <span class="post-author">Publicado por: ${post.displayName || post.email}</span>
+    </div>
+    <textarea class="post-content" readonly id="area-${post.id}">${post.nota}</textarea>
+    <div class="post-actions">
+      <button class="btn btn-danger" id="btn-eliminar-${post.id}" ${usuario.uid !== post.idUser ? 'disabled' : ''}>
+        <img src="../images/basura.png" alt="Eliminar"/>
+      </button>
+      <button class="btn btn-warning" id="btn-editar-${post.id}" ${usuario.uid !== post.idUser ? 'disabled' : ''}>
+        <img src="../images/editar.png" alt="Editar"/>
+      </button>
+      <button class="btn btn-success" id="btn-guardar-${post.id}" ${usuario.uid !== post.idUser ? 'disabled' : ''}>
+        <img src="../images/descargar.png" alt="Guardar"/>
+      </button>
+    </div>
+  `;
 
-    divWrap.querySelector(`#btn-guardar-${post.id}`)
-      .addEventListener('click', () => {
-          const nuevo = document.getElementById('area').value;
-          nuevaNota(post.id, nuevo)
-      });
+  // Solo añadir eventos si el usuario es el autor
+  if (usuario.uid === post.idUser) {
+    divWrap.querySelector(`#btn-eliminar-${post.id}`).addEventListener('click', () => eliminarNota(post));
+    divWrap.querySelector(`#btn-editar-${post.id}`).addEventListener('click', () => {
+      document.getElementById(`area-${post.id}`).readOnly = false;
+    });
+    divWrap.querySelector(`#btn-guardar-${post.id}`).addEventListener('click', () => {
+      const nuevo = document.getElementById(`area-${post.id}`).value;
+      nuevaNota(post.id, nuevo);
+    });
   }
 
   return divWrap;
-}
+};
+
+/*const pintarPost = (post) => {
+  const divWrap = document.createElement('div');
+  divWrap.classList.add('post-card');
+
+  const usuario = usuarioActivo();
+
+  divWrap.innerHTML = `
+    <div class="post-header">
+      <span class="post-author">Publicado por: ${post.displayName || post.email}</span>
+    </div>
+    <textarea class="post-content" readonly id="area-${post.id}">${post.nota}</textarea>
+    ${usuario.uid === post.idUser ? `
+      <div class="post-actions">
+        <button class="btn btn-danger" id="btn-eliminar-${post.id}">
+          <img src="../images/basura.png" alt="Eliminar"/>
+        </button>
+        <button class="btn btn-warning" id="btn-editar-${post.id}">
+          <img src="../images/editar.png" alt="Editar"/>
+        </button>
+        <button class="btn btn-success" id="btn-guardar-${post.id}">
+          <img src="../images/descargar.png" alt="Guardar"/>
+        </button>
+      </div>
+    ` : ''}
+  `;
+
+  if (usuario.uid === post.idUser) {
+    divWrap.querySelector(`#btn-eliminar-${post.id}`).addEventListener('click', () => eliminarNota(post));
+    divWrap.querySelector(`#btn-editar-${post.id}`).addEventListener('click', () => {
+      document.getElementById(`area-${post.id}`).readOnly = false;
+    });
+    divWrap.querySelector(`#btn-guardar-${post.id}`).addEventListener('click', () => {
+      const nuevo = document.getElementById(`area-${post.id}`).value;
+      nuevaNota(post.id, nuevo);
+    });
+  }
+
+  return divWrap;
+};
+*/

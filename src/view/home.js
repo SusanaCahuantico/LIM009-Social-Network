@@ -1,31 +1,45 @@
 import { logear, google } from "../view-controller/promises.js";
 
 export default () => {
-    const CreateChildNode = document.createElement("div");
-    const Content =
-        `<div class="row">
-    <div class="col-md-6 logo">
-    <img class="img-fluid mx-5 p-4" src="../images/logo.png" alt=""/>
-    </div>
-    <div class="col-md-6 intro general">
-    <img src="../images/titulo.PNG" alt=""/>
-    <h3 class="mx-2 p-2"> Bienvenida </h3>
-    <input class="form-control mx-auto p-2" id="emailLogin" style="width: 350px" type="text" placeholder="Email"/> </br>
-    <input class="form-control mx-auto p-2" id="contraseñaLogin" style="width: 350px" type="password" placeholder="Password"/> </br>
-    <button class="btn btn-primary" id="btnLogin">Ingresar</button> </br>
-    <p>Tambien puedes ingresar con ...</p>
-     <img id="btnGoogle" class ="icon" src="../images/busqueda(1).png" alt=""/>
-    <span>No tienes un cuenta? <a href="#/registrate"> Registrate!</a> </span>
-    </div>
-    </div>`
-        ;
-    CreateChildNode.innerHTML = Content;
+    const tempContainer = document.createElement('div');
 
-    const btnLogIn = CreateChildNode.querySelector('#btnLogin')
-    btnLogIn.addEventListener('click', logear)
+    tempContainer.innerHTML = `
+        <div class="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+            <div class="bg-white p-5 rounded shadow-sm col-md-6 col-lg-4">
+                <div class="text-center mb-4">
+                    <img src="../images/logo.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
+                </div>
+                <div class="text-center mb-4 ms-4 ps-4">
+                    <h1>MISPATAS</h1>
+                </div>
 
-    const botonGoogle = CreateChildNode.querySelector('#btnGoogle')
-    botonGoogle.addEventListener('click', google)
+                <form>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="emailLogin" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="contraseñaLogin" placeholder="Password">
+                    </div>
+                    <button type="button" class="btn btn-primary w-100 mb-3" id="btnLogin">Ingresar</button>
+                </form>
 
-    return CreateChildNode
-}
+                <p class="text-center mb-3">También puedes ingresar con ...</p>
+                <div class="text-center mb-3">
+                    <img src="../images/busqueda(1).png" alt="Google" id="btnGoogle" class="img-fluid" style="max-width: 40px; cursor: pointer;">
+                </div>
+
+                <p class="text-center mb-0">¿No tienes una cuenta? <a href="#/registrate" class="text-decoration-none">¡Regístrate!</a></p>
+            </div>
+        </div>
+    `;
+
+    const mainNode = tempContainer.firstElementChild;
+
+    const btnLogIn = mainNode.querySelector('#btnLogin');
+    btnLogIn.addEventListener('click', logear);
+
+    const botonGoogle = mainNode.querySelector('#btnGoogle');
+    botonGoogle.addEventListener('click', google);
+
+    return mainNode;
+};
